@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIoT Intelligence Forest Protection System</title>
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Top Header -->
+    <header class="top-header">
+      <div class="header-brand">
+        <i class="fa-solid fa-tree-deciduous brand-icon"></i>
+        <div>
+          <h1>AIoT Intelligence Forest Protection</h1>
+          <p class="subtitle">Real-time Vision AI Surveillance, Fire Extinguishing & Ultrasonic Radar Node</p>
+        </div>
+      </div>
+      <div class="system-status-badges">
+        <div id="cam-status" class="badge badge-disconnected">
+          <i class="fa-solid fa-camera"></i> <span>ESP32-CAM: Offline</span>
+        </div>
+        <div id="esp-status" class="badge badge-disconnected">
+          <i class="fa-solid fa-microchip"></i> <span>ESP32 Node: Disconnected</span>
+        </div>
+        <div id="server-status" class="badge badge-connected">
+          <i class="fa-solid fa-server"></i> <span>Server Hub: Active</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Metrics Cards Grid -->
+    <section class="metrics-grid">
+      <div class="metric-card card-green">
+        <div class="metric-icon"><i class="fa-solid fa-tree"></i></div>
+        <div class="metric-info">
+          <h3>Pohon Jatuh Alami</h3>
+          <div class="metric-value" id="count-jatuh-alami">{{ data.counters.pohon_jatuh_alami }}</div>
+          <span class="metric-sub">Kamera AI Tracking (Natural)</span>
+        </div>
+      </div>
+
+      <div class="metric-card card-orange">
+        <div class="metric-icon"><i class="fa-solid fa-axe"></i></div>
+        <div class="metric-info">
+          <h3>Pohon Ditebang</h3>
+          <div class="metric-value" id="count-ditebang">{{ data.counters.pohon_ditebang }}</div>
+          <span class="metric-sub">Illegal Logging Detected</span>
+        </div>
+      </div>
+
+      <div class="metric-card card-red">
+        <div class="metric-icon"><i class="fa-solid fa-fire-flame-curved"></i></div>
+        <div class="metric-info">
+          <h3>Insiden Api Terdeteksi</h3>
+          <div class="metric-value" id="count-api">{{ data.counters.insiden_api }}</div>
+          <span class="metric-sub">Auto Fire Suppression Active</span>
+        </div>
+      </div>
+
+      <div class="metric-card card-cyan">
+        <div class="metric-icon"><i class="fa-solid fa-tower-broadcast"></i></div>
+        <div class="metric-info">
+          <h3>Objek Masuk (1-8cm)</h3>
+          <div class="metric-value" id="count-ultrasonik">{{ data.counters.objek_masuk_ultrasonik }}</div>
+          <span class="metric-sub">Ultrasonic Radar Incursions</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Live Surveillance Section -->
+    <main class="main-dashboard-grid">
+      <!-- Left Column: Video Feed & Vision Tracking -->
+      <section class="card video-panel">
+        <div class="card-header">
+          <h2><i class="fa-solid fa-video"></i> ESP32-CAM AI Vision Live Stream (TCP Socket)</h2>
+          <div style="display: flex; gap: 8px; align-items: center;">
+            <button class="btn btn-sm btn-outline" onclick="captureSnapshot()" title="Simpan frame live ke folder dataset/images/">
+              <i class="fa-solid fa-camera-retro"></i> Capture Snapshot
+            </button>
+            <span class="live-pill"><span class="blink-dot"></span> LIVE STREAM</span>
+          </div>
+        </div>
+        <div class="video-wrapper">
+          <img id="stream-img" src="/video_feed" alt="Forest Live Stream">
+          <div class="zone-labels-overlay">
+            <span class="zone-tag z1"><i class="fa-solid fa-shield"></i> WILAYAH 1 (Tower 1)</span>
+            <span class="zone-tag z2"><i class="fa-solid fa-shield"></i> WILAYAH 2 (Tower 2)</span>
+          </div>
+        </div>
+        <div class="feed-footer">
+          <div class="detection-legend">
+            <span><span class="color-dot dot-orange"></span> Pohon Ditebang</span>
+            <span><span class="color-dot dot-yellow"></span> Pohon Jatuh Alami</span>
+            <span><span class="color-dot dot-red"></span> Api (Fire)</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right Column: Ultrasonic Sensor Meter & Actuator Control -->
+      <section class="sidebar-grid">
+        <!-- Ultrasonic 1-8cm Proximity Detector -->
+        <div class="card radar-panel">
+          <div class="card-header">
+            <h2><i class="fa-solid fa-ruler-horizontal"></i> Ultrasonic Intrusion Sensor</h2>
+            <div class="radar-distance-badge">
+              Jarak: <strong id="val-distance">--</strong> cm
+            </div>
+          </div>
+          <div class="proximity-wrapper">
+            <div class="proximity-meter-container">
+              <div class="proximity-bar-track">
+                <div id="proximity-bar-fill" class="proximity-bar-fill" style="width: 100%;"></div>
+                <div class="threshold-marker" title="Batas 1-8cm"></div>
+              </div>
+              <div class="proximity-scale">
+                <span>0 cm</span>
+                <span class="crit-label">1-8 cm (ALERT)</span>
+                <span>30+ cm</span>
+              </div>
+            </div>
+            <div class="proximity-status-box">
+              <span id="obstacle-warning" class="status-clean">STATUS: AREA AMAN</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tower Actuators Control & Status (2 Servos & 2 Relays) -->
+        <div class="card actuators-panel">
+          <div class="card-header">
+            <h2><i class="fa-solid fa-crosshairs"></i> Tower Fire Suppression (2 Servos & 2 Relays)</h2>
+          </div>
+          
+          <div class="actuator-zones">
+            <!-- Zone 1 Tower -->
+            <div class="tower-box">
+              <div class="tower-header">
+                <h4><i class="fa-solid fa-tower-observation"></i> Tower Wilayah 1</h4>
+                <span id="badge-relay1" class="status-tag tag-off">PUMP 1 OFF</span>
+              </div>
+              <div class="control-row">
+                <label>Servo 1 Angle:</label>
+                <div class="slider-val"><span id="tower1-angle-txt">90</span>°</div>
+              </div>
+              <input type="range" id="tower1-slider" min="0" max="180" value="90" oninput="updateServo(1, this.value)">
+              <div class="btn-group">
+                <button class="btn btn-sm btn-action" onclick="toggleRelay(1, true)">Spray Zone 1</button>
+                <button class="btn btn-sm btn-outline" onclick="toggleRelay(1, false)">Stop</button>
+              </div>
+            </div>
+
+            <!-- Zone 2 Tower -->
+            <div class="tower-box">
+              <div class="tower-header">
+                <h4><i class="fa-solid fa-tower-observation"></i> Tower Wilayah 2</h4>
+                <span id="badge-relay2" class="status-tag tag-off">PUMP 2 OFF</span>
+              </div>
+              <div class="control-row">
+                <label>Servo 2 Angle:</label>
+                <div class="slider-val"><span id="tower2-angle-txt">90</span>°</div>
+              </div>
+              <input type="range" id="tower2-slider" min="0" max="180" value="90" oninput="updateServo(2, this.value)">
+              <div class="btn-group">
+                <button class="btn btn-sm btn-action" onclick="toggleRelay(2, true)">Spray Zone 2</button>
+                <button class="btn btn-sm btn-outline" onclick="toggleRelay(2, false)">Stop</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hardware Indicators & Test Controls -->
+          <div class="hardware-indicators">
+            <div class="hw-item">
+              <span>RGB LED:</span>
+              <span id="hw-rgb" class="hw-pill pill-green">GREEN (SAFE)</span>
+            </div>
+            <div class="hw-item">
+              <span>Passive Buzzer:</span>
+              <span id="hw-buzzer" class="hw-pill pill-off">MUTE</span>
+            </div>
+            <div class="hw-item">
+              <span>Flame Sensor:</span>
+              <span id="hw-flame" class="hw-pill pill-green">NO FLAME</span>
+            </div>
+          </div>
+
+          <!-- Quick Test Hardware Buttons -->
+          <div style="margin-top: 14px; display: flex; gap: 6px; flex-wrap: wrap;">
+            <button class="btn btn-sm btn-outline" onclick="testBuzzer()" title="Bip sirine">
+              <i class="fa-solid fa-bell"></i> Test Buzzer
+            </button>
+            <button class="btn btn-sm btn-outline" style="color: #ef4444;" onclick="setRGB('RED')">LED Merah</button>
+            <button class="btn btn-sm btn-outline" style="color: #10b981;" onclick="setRGB('GREEN')">LED Hijau</button>
+            <button class="btn btn-sm btn-outline" style="color: #eab308;" onclick="setRGB('YELLOW')">LED Kuning</button>
+            <button class="btn btn-sm btn-outline" style="color: #3b82f6;" onclick="setRGB('BLUE')">LED Biru</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Incident Logs & Database Section -->
+    <section class="card log-section">
+      <div class="card-header">
+        <h2><i class="fa-solid fa-database"></i> Live Forest Protection Events & JSON Database</h2>
+        <div class="log-actions">
+          <a href="/api/database" target="_blank" class="btn btn-sm btn-outline">
+            <i class="fa-solid fa-file-code"></i> View Raw JSON DB
+          </a>
+        </div>
+      </div>
+      <div class="table-container">
+        <table class="event-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Timestamp</th>
+              <th>Event Type</th>
+              <th>Wilayah / Sensor</th>
+              <th>Deskripsi Insiden</th>
+              <th>Status Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="event-log-tbody">
+            {% for evt in data.events[:15] %}
+            <tr>
+              <td>#{{ evt.id }}</td>
+              <td>{{ evt.timestamp }}</td>
+              <td>
+                <span class="badge badge-{{ evt.type | lower }}">{{ evt.type }}</span>
+              </td>
+              <td>{{ evt.zone }}</td>
+              <td>{{ evt.description }}</td>
+              <td><span class="action-tag">LOGGED</span></td>
+            </tr>
+            {% else %}
+            <tr id="empty-row">
+              <td colspan="6" class="text-center">Belum ada aktivitas insiden. Sistem memantau secara realtime...</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <!-- Socket.io & Dashboard JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js"></script>
+  <script src="/static/js/dashboard.js"></script>
+</body>
+</html>
