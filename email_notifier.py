@@ -47,10 +47,10 @@ DEFAULT_EMAIL_CONFIG = {
     "smtp_server": "smtp.gmail.com",
     "smtp_port": 587,
     "use_tls": True,
-    "sender_email": "mzidaneakbari3@gmail.com",
-    "sender_password": "feng ovbf vcjd epqg",
+    "sender_email": "-",
+    "sender_password": "-",
     "recipient_emails": [
-        "mzidaneakbari2@gmail.com"
+        "-"
     ],
     "fire_timeout_seconds": 15,
     "cooldown_seconds": 30
