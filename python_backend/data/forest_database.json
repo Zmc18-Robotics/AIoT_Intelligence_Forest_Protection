@@ -1,0 +1,4448 @@
+{
+  "counters": {
+    "pohon_jatuh_alami": 2,
+    "pohon_ditebang": 7,
+    "insiden_api": 169,
+    "objek_masuk_ultrasonik": 4
+  },
+  "events": [
+    {
+      "id": 182,
+      "timestamp": "2026-10-13 14:34:31",
+      "type": "OBJEK_ULTRASONIK",
+      "zone": "Area Sensor Ultrasonik",
+      "description": "Objek terdeteksi dalam radius dekat: 2.1 cm",
+      "details": {
+        "distance_cm": 2.1
+      }
+    },
+    {
+      "id": 181,
+      "timestamp": "2026-10-13 14:34:18",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 0\u00b0, Conf: 84%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.84,
+        "bbox": [
+          32,
+          140,
+          80,
+          187
+        ],
+        "center": [
+          56,
+          163
+        ],
+        "zone": 1,
+        "angle": 0,
+        "proj_pt": [
+          59,
+          159
+        ]
+      }
+    },
+    {
+      "id": 180,
+      "timestamp": "2026-10-13 14:34:13",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 0\u00b0, Conf: 85%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.85,
+        "bbox": [
+          32,
+          140,
+          80,
+          187
+        ],
+        "center": [
+          56,
+          163
+        ],
+        "zone": 1,
+        "angle": 0,
+        "proj_pt": [
+          59,
+          159
+        ]
+      }
+    },
+    {
+      "id": 179,
+      "timestamp": "2026-10-13 14:34:08",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 0\u00b0, Conf: 84%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.84,
+        "bbox": [
+          32,
+          140,
+          80,
+          187
+        ],
+        "center": [
+          56,
+          163
+        ],
+        "zone": 1,
+        "angle": 0,
+        "proj_pt": [
+          59,
+          159
+        ]
+      }
+    },
+    {
+      "id": 178,
+      "timestamp": "2026-10-13 14:34:03",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 0\u00b0, Conf: 85%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.85,
+        "bbox": [
+          32,
+          140,
+          80,
+          187
+        ],
+        "center": [
+          56,
+          163
+        ],
+        "zone": 1,
+        "angle": 0,
+        "proj_pt": [
+          59,
+          159
+        ]
+      }
+    },
+    {
+      "id": 177,
+      "timestamp": "2026-10-13 14:33:58",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 0\u00b0, Conf: 84%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.84,
+        "bbox": [
+          32,
+          141,
+          80,
+          187
+        ],
+        "center": [
+          56,
+          164
+        ],
+        "zone": 1,
+        "angle": 0,
+        "proj_pt": [
+          59,
+          159
+        ]
+      }
+    },
+    {
+      "id": 176,
+      "timestamp": "2026-10-13 14:33:53",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 0\u00b0, Conf: 84%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.84,
+        "bbox": [
+          32,
+          141,
+          80,
+          187
+        ],
+        "center": [
+          56,
+          164
+        ],
+        "zone": 1,
+        "angle": 0,
+        "proj_pt": [
+          59,
+          159
+        ]
+      }
+    },
+    {
+      "id": 175,
+      "timestamp": "2026-10-13 14:33:47",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 0\u00b0, Conf: 84%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.84,
+        "bbox": [
+          32,
+          140,
+          80,
+          187
+        ],
+        "center": [
+          56,
+          163
+        ],
+        "zone": 1,
+        "angle": 0,
+        "proj_pt": [
+          59,
+          159
+        ]
+      }
+    },
+    {
+      "id": 174,
+      "timestamp": "2026-10-13 14:33:42",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 0\u00b0, Conf: 84%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.84,
+        "bbox": [
+          32,
+          141,
+          80,
+          187
+        ],
+        "center": [
+          56,
+          164
+        ],
+        "zone": 1,
+        "angle": 0,
+        "proj_pt": [
+          59,
+          159
+        ]
+      }
+    },
+    {
+      "id": 173,
+      "timestamp": "2026-10-13 14:33:37",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 0\u00b0, Conf: 84%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.84,
+        "bbox": [
+          33,
+          140,
+          80,
+          187
+        ],
+        "center": [
+          56,
+          163
+        ],
+        "zone": 1,
+        "angle": 0,
+        "proj_pt": [
+          59,
+          159
+        ]
+      }
+    },
+    {
+      "id": 172,
+      "timestamp": "2026-10-13 14:33:32",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 6\u00b0, Conf: 67%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.67,
+        "bbox": [
+          34,
+          127,
+          82,
+          180
+        ],
+        "center": [
+          58,
+          153
+        ],
+        "zone": 1,
+        "angle": 6,
+        "proj_pt": [
+          61,
+          155
+        ]
+      }
+    },
+    {
+      "id": 171,
+      "timestamp": "2026-10-13 14:33:18",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 2",
+      "description": "Api terdeteksi di Area 2 (Angle: 0\u00b0, Conf: 79%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.79,
+        "bbox": [
+          161,
+          119,
+          205,
+          160
+        ],
+        "center": [
+          183,
+          139
+        ],
+        "zone": 2,
+        "angle": 0,
+        "proj_pt": [
+          180,
+          141
+        ]
+      }
+    },
+    {
+      "id": 170,
+      "timestamp": "2026-10-13 14:33:13",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 2",
+      "description": "Api terdeteksi di Area 2 (Angle: 0\u00b0, Conf: 81%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.81,
+        "bbox": [
+          161,
+          119,
+          204,
+          160
+        ],
+        "center": [
+          182,
+          139
+        ],
+        "zone": 2,
+        "angle": 0,
+        "proj_pt": [
+          180,
+          141
+        ]
+      }
+    },
+    {
+      "id": 169,
+      "timestamp": "2026-10-13 14:33:08",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 2",
+      "description": "Api terdeteksi di Area 2 (Angle: 0\u00b0, Conf: 79%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.79,
+        "bbox": [
+          161,
+          119,
+          205,
+          160
+        ],
+        "center": [
+          183,
+          139
+        ],
+        "zone": 2,
+        "angle": 0,
+        "proj_pt": [
+          180,
+          141
+        ]
+      }
+    },
+    {
+      "id": 168,
+      "timestamp": "2026-10-13 14:33:03",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 2",
+      "description": "Api terdeteksi di Area 2 (Angle: 0\u00b0, Conf: 81%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.81,
+        "bbox": [
+          161,
+          119,
+          204,
+          160
+        ],
+        "center": [
+          182,
+          139
+        ],
+        "zone": 2,
+        "angle": 0,
+        "proj_pt": [
+          180,
+          141
+        ]
+      }
+    },
+    {
+      "id": 167,
+      "timestamp": "2026-10-13 14:32:58",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 2",
+      "description": "Api terdeteksi di Area 2 (Angle: 0\u00b0, Conf: 81%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.81,
+        "bbox": [
+          161,
+          119,
+          205,
+          160
+        ],
+        "center": [
+          183,
+          139
+        ],
+        "zone": 2,
+        "angle": 0,
+        "proj_pt": [
+          180,
+          141
+        ]
+      }
+    },
+    {
+      "id": 166,
+      "timestamp": "2026-10-13 14:32:53",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 2",
+      "description": "Api terdeteksi di Area 2 (Angle: 0\u00b0, Conf: 81%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.81,
+        "bbox": [
+          161,
+          119,
+          205,
+          161
+        ],
+        "center": [
+          183,
+          140
+        ],
+        "zone": 2,
+        "angle": 0,
+        "proj_pt": [
+          180,
+          141
+        ]
+      }
+    },
+    {
+      "id": 165,
+      "timestamp": "2026-10-13 14:32:48",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 2",
+      "description": "Api terdeteksi di Area 2 (Angle: 0\u00b0, Conf: 81%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.81,
+        "bbox": [
+          161,
+          119,
+          205,
+          160
+        ],
+        "center": [
+          183,
+          139
+        ],
+        "zone": 2,
+        "angle": 0,
+        "proj_pt": [
+          180,
+          141
+        ]
+      }
+    },
+    {
+      "id": 164,
+      "timestamp": "2026-10-13 14:32:43",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 2",
+      "description": "Api terdeteksi di Area 2 (Angle: 0\u00b0, Conf: 80%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.8,
+        "bbox": [
+          161,
+          119,
+          204,
+          160
+        ],
+        "center": [
+          182,
+          139
+        ],
+        "zone": 2,
+        "angle": 0,
+        "proj_pt": [
+          180,
+          141
+        ]
+      }
+    },
+    {
+      "id": 163,
+      "timestamp": "2026-10-13 14:32:38",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 2",
+      "description": "Api terdeteksi di Area 2 (Angle: 0\u00b0, Conf: 80%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.8,
+        "bbox": [
+          161,
+          119,
+          204,
+          160
+        ],
+        "center": [
+          182,
+          139
+        ],
+        "zone": 2,
+        "angle": 0,
+        "proj_pt": [
+          180,
+          141
+        ]
+      }
+    },
+    {
+      "id": 162,
+      "timestamp": "2026-10-13 14:32:33",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 2",
+      "description": "Api terdeteksi di Area 2 (Angle: 0\u00b0, Conf: 80%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.8,
+        "bbox": [
+          161,
+          119,
+          205,
+          160
+        ],
+        "center": [
+          183,
+          139
+        ],
+        "zone": 2,
+        "angle": 0,
+        "proj_pt": [
+          180,
+          141
+        ]
+      }
+    },
+    {
+      "id": 161,
+      "timestamp": "2026-10-13 14:32:28",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 2",
+      "description": "Api terdeteksi di Area 2 (Angle: 0\u00b0, Conf: 82%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.82,
+        "bbox": [
+          161,
+          119,
+          205,
+          160
+        ],
+        "center": [
+          183,
+          139
+        ],
+        "zone": 2,
+        "angle": 0,
+        "proj_pt": [
+          180,
+          141
+        ]
+      }
+    },
+    {
+      "id": 160,
+      "timestamp": "2026-10-13 14:32:23",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 18\u00b0, Conf: 74%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.74,
+        "bbox": [
+          2,
+          215,
+          63,
+          240
+        ],
+        "center": [
+          32,
+          227
+        ],
+        "zone": 0,
+        "angle": 18,
+        "proj_pt": [
+          32,
+          240
+        ]
+      }
+    },
+    {
+      "id": 159,
+      "timestamp": "2026-10-13 14:32:14",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 2",
+      "description": "Api terdeteksi di Area 2 (Angle: 0\u00b0, Conf: 86%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.86,
+        "bbox": [
+          167,
+          118,
+          211,
+          159
+        ],
+        "center": [
+          189,
+          138
+        ],
+        "zone": 2,
+        "angle": 0,
+        "proj_pt": [
+          180,
+          141
+        ]
+      }
+    },
+    {
+      "id": 158,
+      "timestamp": "2026-10-13 14:32:09",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 2",
+      "description": "Api terdeteksi di Area 2 (Angle: 0\u00b0, Conf: 85%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.85,
+        "bbox": [
+          167,
+          118,
+          210,
+          159
+        ],
+        "center": [
+          188,
+          138
+        ],
+        "zone": 2,
+        "angle": 0,
+        "proj_pt": [
+          180,
+          141
+        ]
+      }
+    },
+    {
+      "id": 157,
+      "timestamp": "2026-10-13 14:32:04",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 2",
+      "description": "Api terdeteksi di Area 2 (Angle: 0\u00b0, Conf: 86%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.86,
+        "bbox": [
+          167,
+          118,
+          210,
+          160
+        ],
+        "center": [
+          188,
+          139
+        ],
+        "zone": 2,
+        "angle": 0,
+        "proj_pt": [
+          180,
+          141
+        ]
+      }
+    },
+    {
+      "id": 156,
+      "timestamp": "2026-10-13 14:31:59",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 2",
+      "description": "Api terdeteksi di Area 2 (Angle: 0\u00b0, Conf: 85%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.85,
+        "bbox": [
+          167,
+          117,
+          210,
+          160
+        ],
+        "center": [
+          188,
+          138
+        ],
+        "zone": 2,
+        "angle": 0,
+        "proj_pt": [
+          180,
+          141
+        ]
+      }
+    },
+    {
+      "id": 155,
+      "timestamp": "2026-10-13 14:31:54",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 2",
+      "description": "Api terdeteksi di Area 2 (Angle: 0\u00b0, Conf: 87%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.87,
+        "bbox": [
+          167,
+          118,
+          211,
+          160
+        ],
+        "center": [
+          189,
+          139
+        ],
+        "zone": 2,
+        "angle": 0,
+        "proj_pt": [
+          180,
+          141
+        ]
+      }
+    },
+    {
+      "id": 154,
+      "timestamp": "2026-10-13 14:31:49",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 2",
+      "description": "Api terdeteksi di Area 2 (Angle: 0\u00b0, Conf: 84%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.84,
+        "bbox": [
+          167,
+          117,
+          211,
+          160
+        ],
+        "center": [
+          189,
+          138
+        ],
+        "zone": 2,
+        "angle": 0,
+        "proj_pt": [
+          180,
+          141
+        ]
+      }
+    },
+    {
+      "id": 153,
+      "timestamp": "2026-10-13 14:31:44",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 2",
+      "description": "Api terdeteksi di Area 2 (Angle: 0\u00b0, Conf: 86%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.86,
+        "bbox": [
+          167,
+          117,
+          210,
+          160
+        ],
+        "center": [
+          188,
+          138
+        ],
+        "zone": 2,
+        "angle": 0,
+        "proj_pt": [
+          180,
+          141
+        ]
+      }
+    },
+    {
+      "id": 152,
+      "timestamp": "2026-10-13 14:31:38",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 17\u00b0, Conf: 77%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.77,
+        "bbox": [
+          2,
+          204,
+          61,
+          240
+        ],
+        "center": [
+          31,
+          222
+        ],
+        "zone": 0,
+        "angle": 17,
+        "proj_pt": [
+          31,
+          240
+        ]
+      }
+    },
+    {
+      "id": 151,
+      "timestamp": "2026-10-13 14:31:33",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 17\u00b0, Conf: 78%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.78,
+        "bbox": [
+          2,
+          203,
+          61,
+          240
+        ],
+        "center": [
+          31,
+          221
+        ],
+        "zone": 0,
+        "angle": 17,
+        "proj_pt": [
+          31,
+          240
+        ]
+      }
+    },
+    {
+      "id": 150,
+      "timestamp": "2026-10-13 14:31:28",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 17\u00b0, Conf: 80%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.8,
+        "bbox": [
+          3,
+          204,
+          60,
+          240
+        ],
+        "center": [
+          31,
+          222
+        ],
+        "zone": 0,
+        "angle": 17,
+        "proj_pt": [
+          31,
+          240
+        ]
+      }
+    },
+    {
+      "id": 149,
+      "timestamp": "2026-10-13 14:30:42",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 45\u00b0, Conf: 85%)",
+      "details": {
+        "label": "Api",
+        "class_id": 2,
+        "zone": 1,
+        "angle": 45,
+        "confidence": 0.85,
+        "bbox": [
+          100,
+          100,
+          150,
+          150
+        ]
+      }
+    },
+    {
+      "id": 148,
+      "timestamp": "2026-10-13 14:30:26",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 45\u00b0, Conf: 85%)",
+      "details": {
+        "label": "Api",
+        "class_id": 2,
+        "zone": 1,
+        "angle": 45,
+        "confidence": 0.85,
+        "bbox": [
+          100,
+          100,
+          150,
+          150
+        ]
+      }
+    },
+    {
+      "id": 147,
+      "timestamp": "2026-10-13 14:20:31",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 17\u00b0, Conf: 81%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.81,
+        "bbox": [
+          2,
+          204,
+          61,
+          240
+        ],
+        "center": [
+          31,
+          222
+        ],
+        "zone": 0,
+        "angle": 17
+      }
+    },
+    {
+      "id": 146,
+      "timestamp": "2026-10-13 14:20:26",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 18\u00b0, Conf: 82%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.82,
+        "bbox": [
+          2,
+          203,
+          63,
+          240
+        ],
+        "center": [
+          32,
+          221
+        ],
+        "zone": 0,
+        "angle": 18
+      }
+    },
+    {
+      "id": 145,
+      "timestamp": "2026-10-13 14:20:21",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 17\u00b0, Conf: 82%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.82,
+        "bbox": [
+          2,
+          202,
+          61,
+          240
+        ],
+        "center": [
+          31,
+          221
+        ],
+        "zone": 0,
+        "angle": 17
+      }
+    },
+    {
+      "id": 144,
+      "timestamp": "2026-10-13 14:20:16",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 18\u00b0, Conf: 80%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.8,
+        "bbox": [
+          2,
+          204,
+          62,
+          240
+        ],
+        "center": [
+          32,
+          222
+        ],
+        "zone": 0,
+        "angle": 18
+      }
+    },
+    {
+      "id": 143,
+      "timestamp": "2026-10-13 14:20:11",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 17\u00b0, Conf: 81%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.81,
+        "bbox": [
+          1,
+          204,
+          62,
+          240
+        ],
+        "center": [
+          31,
+          222
+        ],
+        "zone": 0,
+        "angle": 17
+      }
+    },
+    {
+      "id": 142,
+      "timestamp": "2026-10-13 14:20:06",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 5\u00b0, Conf: 54%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.54,
+        "bbox": [
+          0,
+          211,
+          20,
+          239
+        ],
+        "center": [
+          10,
+          225
+        ],
+        "zone": 0,
+        "angle": 5
+      }
+    },
+    {
+      "id": 141,
+      "timestamp": "2026-10-13 14:20:00",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 2",
+      "description": "Api terdeteksi di Area 2 (Angle: 99\u00b0, Conf: 86%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.86,
+        "bbox": [
+          157,
+          130,
+          199,
+          168
+        ],
+        "center": [
+          178,
+          149
+        ],
+        "zone": 2,
+        "angle": 99
+      }
+    },
+    {
+      "id": 140,
+      "timestamp": "2026-10-13 14:19:55",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 2",
+      "description": "Api terdeteksi di Area 2 (Angle: 99\u00b0, Conf: 86%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.86,
+        "bbox": [
+          157,
+          129,
+          199,
+          168
+        ],
+        "center": [
+          178,
+          148
+        ],
+        "zone": 2,
+        "angle": 99
+      }
+    },
+    {
+      "id": 139,
+      "timestamp": "2026-10-13 14:19:50",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 2",
+      "description": "Api terdeteksi di Area 2 (Angle: 99\u00b0, Conf: 85%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.85,
+        "bbox": [
+          157,
+          130,
+          199,
+          169
+        ],
+        "center": [
+          178,
+          149
+        ],
+        "zone": 2,
+        "angle": 99
+      }
+    },
+    {
+      "id": 138,
+      "timestamp": "2026-10-13 14:19:45",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 2",
+      "description": "Api terdeteksi di Area 2 (Angle: 56\u00b0, Conf: 80%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.8,
+        "bbox": [
+          78,
+          111,
+          140,
+          184
+        ],
+        "center": [
+          109,
+          147
+        ],
+        "zone": 2,
+        "angle": 56
+      }
+    },
+    {
+      "id": 137,
+      "timestamp": "2026-10-13 14:19:38",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 85\u00b0, Conf: 78%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.78,
+        "bbox": [
+          53,
+          139,
+          99,
+          187
+        ],
+        "center": [
+          76,
+          163
+        ],
+        "zone": 1,
+        "angle": 85
+      }
+    },
+    {
+      "id": 136,
+      "timestamp": "2026-10-13 14:19:33",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 85\u00b0, Conf: 80%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.8,
+        "bbox": [
+          52,
+          139,
+          98,
+          187
+        ],
+        "center": [
+          75,
+          163
+        ],
+        "zone": 1,
+        "angle": 85
+      }
+    },
+    {
+      "id": 135,
+      "timestamp": "2026-10-13 14:19:28",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 85\u00b0, Conf: 78%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.78,
+        "bbox": [
+          53,
+          139,
+          99,
+          187
+        ],
+        "center": [
+          76,
+          163
+        ],
+        "zone": 1,
+        "angle": 85
+      }
+    },
+    {
+      "id": 134,
+      "timestamp": "2026-10-13 14:19:22",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 85\u00b0, Conf: 78%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.78,
+        "bbox": [
+          53,
+          138,
+          99,
+          187
+        ],
+        "center": [
+          76,
+          162
+        ],
+        "zone": 1,
+        "angle": 85
+      }
+    },
+    {
+      "id": 133,
+      "timestamp": "2026-10-13 14:19:17",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 85\u00b0, Conf: 78%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.78,
+        "bbox": [
+          53,
+          138,
+          99,
+          187
+        ],
+        "center": [
+          76,
+          162
+        ],
+        "zone": 1,
+        "angle": 85
+      }
+    },
+    {
+      "id": 132,
+      "timestamp": "2026-10-13 14:17:14",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 2",
+      "description": "Api terdeteksi di Area 2 (Angle: 100\u00b0, Conf: 86%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.86,
+        "bbox": [
+          159,
+          120,
+          201,
+          160
+        ],
+        "center": [
+          180,
+          140
+        ],
+        "zone": 2,
+        "angle": 100
+      }
+    },
+    {
+      "id": 131,
+      "timestamp": "2026-10-13 14:17:09",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 2",
+      "description": "Api terdeteksi di Area 2 (Angle: 100\u00b0, Conf: 85%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.85,
+        "bbox": [
+          159,
+          120,
+          201,
+          160
+        ],
+        "center": [
+          180,
+          140
+        ],
+        "zone": 2,
+        "angle": 100
+      }
+    },
+    {
+      "id": 130,
+      "timestamp": "2026-10-13 14:17:01",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 2",
+      "description": "Api terdeteksi di Area 2 (Angle: 98\u00b0, Conf: 81%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.81,
+        "bbox": [
+          155,
+          125,
+          198,
+          165
+        ],
+        "center": [
+          176,
+          145
+        ],
+        "zone": 2,
+        "angle": 98
+      }
+    },
+    {
+      "id": 129,
+      "timestamp": "2026-10-13 14:16:56",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 13\u00b0, Conf: 87%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.87,
+        "bbox": [
+          0,
+          212,
+          49,
+          240
+        ],
+        "center": [
+          24,
+          226
+        ],
+        "zone": 0,
+        "angle": 13
+      }
+    },
+    {
+      "id": 128,
+      "timestamp": "2026-10-13 14:16:51",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 13\u00b0, Conf: 87%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.87,
+        "bbox": [
+          0,
+          213,
+          49,
+          240
+        ],
+        "center": [
+          24,
+          226
+        ],
+        "zone": 0,
+        "angle": 13
+      }
+    },
+    {
+      "id": 127,
+      "timestamp": "2026-10-13 14:16:46",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 13\u00b0, Conf: 87%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.87,
+        "bbox": [
+          0,
+          212,
+          49,
+          240
+        ],
+        "center": [
+          24,
+          226
+        ],
+        "zone": 0,
+        "angle": 13
+      }
+    },
+    {
+      "id": 126,
+      "timestamp": "2026-10-13 14:10:37",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 13\u00b0, Conf: 87%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.87,
+        "bbox": [
+          0,
+          212,
+          49,
+          240
+        ],
+        "center": [
+          24,
+          226
+        ],
+        "zone": 0,
+        "angle": 13
+      }
+    },
+    {
+      "id": 125,
+      "timestamp": "2026-10-13 14:10:32",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 13\u00b0, Conf: 87%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.87,
+        "bbox": [
+          0,
+          212,
+          49,
+          240
+        ],
+        "center": [
+          24,
+          226
+        ],
+        "zone": 0,
+        "angle": 13
+      }
+    },
+    {
+      "id": 124,
+      "timestamp": "2026-10-13 14:10:27",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 13\u00b0, Conf: 87%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.87,
+        "bbox": [
+          0,
+          211,
+          49,
+          239
+        ],
+        "center": [
+          24,
+          225
+        ],
+        "zone": 0,
+        "angle": 13
+      }
+    },
+    {
+      "id": 123,
+      "timestamp": "2026-10-13 14:10:22",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 13\u00b0, Conf: 86%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.86,
+        "bbox": [
+          0,
+          212,
+          49,
+          240
+        ],
+        "center": [
+          24,
+          226
+        ],
+        "zone": 0,
+        "angle": 13
+      }
+    },
+    {
+      "id": 122,
+      "timestamp": "2026-10-13 14:10:17",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 13\u00b0, Conf: 87%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.87,
+        "bbox": [
+          0,
+          212,
+          49,
+          240
+        ],
+        "center": [
+          24,
+          226
+        ],
+        "zone": 0,
+        "angle": 13
+      }
+    },
+    {
+      "id": 121,
+      "timestamp": "2026-10-13 14:10:12",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 13\u00b0, Conf: 87%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.87,
+        "bbox": [
+          0,
+          212,
+          49,
+          240
+        ],
+        "center": [
+          24,
+          226
+        ],
+        "zone": 0,
+        "angle": 13
+      }
+    },
+    {
+      "id": 120,
+      "timestamp": "2026-10-13 14:10:07",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 13\u00b0, Conf: 86%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.86,
+        "bbox": [
+          0,
+          212,
+          49,
+          240
+        ],
+        "center": [
+          24,
+          226
+        ],
+        "zone": 0,
+        "angle": 13
+      }
+    },
+    {
+      "id": 119,
+      "timestamp": "2026-10-13 14:10:02",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 13\u00b0, Conf: 86%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.86,
+        "bbox": [
+          0,
+          212,
+          49,
+          240
+        ],
+        "center": [
+          24,
+          226
+        ],
+        "zone": 0,
+        "angle": 13
+      }
+    },
+    {
+      "id": 118,
+      "timestamp": "2026-10-13 14:09:56",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 13\u00b0, Conf: 85%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.85,
+        "bbox": [
+          0,
+          212,
+          49,
+          240
+        ],
+        "center": [
+          24,
+          226
+        ],
+        "zone": 0,
+        "angle": 13
+      }
+    },
+    {
+      "id": 117,
+      "timestamp": "2026-10-13 14:09:51",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 13\u00b0, Conf: 86%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.86,
+        "bbox": [
+          0,
+          212,
+          49,
+          240
+        ],
+        "center": [
+          24,
+          226
+        ],
+        "zone": 0,
+        "angle": 13
+      }
+    },
+    {
+      "id": 116,
+      "timestamp": "2026-10-13 14:09:46",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 13\u00b0, Conf: 87%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.87,
+        "bbox": [
+          0,
+          212,
+          49,
+          240
+        ],
+        "center": [
+          24,
+          226
+        ],
+        "zone": 0,
+        "angle": 13
+      }
+    },
+    {
+      "id": 115,
+      "timestamp": "2026-10-13 14:09:41",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 13\u00b0, Conf: 87%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.87,
+        "bbox": [
+          0,
+          212,
+          49,
+          240
+        ],
+        "center": [
+          24,
+          226
+        ],
+        "zone": 0,
+        "angle": 13
+      }
+    },
+    {
+      "id": 114,
+      "timestamp": "2026-10-13 14:09:36",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 13\u00b0, Conf: 86%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.86,
+        "bbox": [
+          0,
+          212,
+          49,
+          240
+        ],
+        "center": [
+          24,
+          226
+        ],
+        "zone": 0,
+        "angle": 13
+      }
+    },
+    {
+      "id": 113,
+      "timestamp": "2026-10-13 14:09:31",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 13\u00b0, Conf: 87%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.87,
+        "bbox": [
+          0,
+          213,
+          49,
+          240
+        ],
+        "center": [
+          24,
+          226
+        ],
+        "zone": 0,
+        "angle": 13
+      }
+    },
+    {
+      "id": 112,
+      "timestamp": "2026-10-13 14:09:26",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 13\u00b0, Conf: 87%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.87,
+        "bbox": [
+          0,
+          212,
+          49,
+          240
+        ],
+        "center": [
+          24,
+          226
+        ],
+        "zone": 0,
+        "angle": 13
+      }
+    },
+    {
+      "id": 111,
+      "timestamp": "2026-10-13 14:09:21",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 13\u00b0, Conf: 86%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.86,
+        "bbox": [
+          0,
+          212,
+          49,
+          240
+        ],
+        "center": [
+          24,
+          226
+        ],
+        "zone": 0,
+        "angle": 13
+      }
+    },
+    {
+      "id": 110,
+      "timestamp": "2026-10-13 14:09:16",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 13\u00b0, Conf: 87%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.87,
+        "bbox": [
+          0,
+          211,
+          49,
+          240
+        ],
+        "center": [
+          24,
+          225
+        ],
+        "zone": 0,
+        "angle": 13
+      }
+    },
+    {
+      "id": 109,
+      "timestamp": "2026-10-13 14:09:11",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 14\u00b0, Conf: 83%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.83,
+        "bbox": [
+          0,
+          210,
+          50,
+          240
+        ],
+        "center": [
+          25,
+          225
+        ],
+        "zone": 0,
+        "angle": 14
+      }
+    },
+    {
+      "id": 108,
+      "timestamp": "2026-10-13 14:09:06",
+      "type": "OBJEK_ULTRASONIK",
+      "zone": "Area Sensor Ultrasonik",
+      "description": "Objek terdeteksi dalam radius dekat: 3.4 cm",
+      "details": {
+        "distance_cm": 3.4
+      }
+    },
+    {
+      "id": 107,
+      "timestamp": "2026-10-13 14:09:06",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 14\u00b0, Conf: 86%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.86,
+        "bbox": [
+          0,
+          211,
+          50,
+          240
+        ],
+        "center": [
+          25,
+          225
+        ],
+        "zone": 0,
+        "angle": 14
+      }
+    },
+    {
+      "id": 106,
+      "timestamp": "2026-10-13 14:09:01",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 14\u00b0, Conf: 84%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.84,
+        "bbox": [
+          0,
+          214,
+          52,
+          240
+        ],
+        "center": [
+          26,
+          227
+        ],
+        "zone": 0,
+        "angle": 14
+      }
+    },
+    {
+      "id": 105,
+      "timestamp": "2026-10-13 14:08:55",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 2",
+      "description": "Api terdeteksi di Area 2 (Angle: 98\u00b0, Conf: 82%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.82,
+        "bbox": [
+          156,
+          122,
+          199,
+          161
+        ],
+        "center": [
+          177,
+          141
+        ],
+        "zone": 2,
+        "angle": 98
+      }
+    },
+    {
+      "id": 104,
+      "timestamp": "2026-10-13 14:08:50",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 2",
+      "description": "Api terdeteksi di Area 2 (Angle: 98\u00b0, Conf: 82%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.82,
+        "bbox": [
+          156,
+          122,
+          199,
+          161
+        ],
+        "center": [
+          177,
+          141
+        ],
+        "zone": 2,
+        "angle": 98
+      }
+    },
+    {
+      "id": 103,
+      "timestamp": "2026-10-13 14:08:45",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 2",
+      "description": "Api terdeteksi di Area 2 (Angle: 98\u00b0, Conf: 84%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.84,
+        "bbox": [
+          156,
+          121,
+          199,
+          161
+        ],
+        "center": [
+          177,
+          141
+        ],
+        "zone": 2,
+        "angle": 98
+      }
+    },
+    {
+      "id": 102,
+      "timestamp": "2026-10-13 14:08:40",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 2",
+      "description": "Api terdeteksi di Area 2 (Angle: 98\u00b0, Conf: 76%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.76,
+        "bbox": [
+          155,
+          119,
+          199,
+          161
+        ],
+        "center": [
+          177,
+          140
+        ],
+        "zone": 2,
+        "angle": 98
+      }
+    },
+    {
+      "id": 101,
+      "timestamp": "2026-10-13 14:08:35",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 116\u00b0, Conf: 84%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.84,
+        "bbox": [
+          95,
+          58,
+          139,
+          119
+        ],
+        "center": [
+          117,
+          88
+        ],
+        "zone": 1,
+        "angle": 116
+      }
+    },
+    {
+      "id": 100,
+      "timestamp": "2026-10-13 14:08:30",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 2",
+      "description": "Api terdeteksi di Area 2 (Angle: 96\u00b0, Conf: 81%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.81,
+        "bbox": [
+          153,
+          119,
+          195,
+          159
+        ],
+        "center": [
+          174,
+          139
+        ],
+        "zone": 2,
+        "angle": 96
+      }
+    },
+    {
+      "id": 99,
+      "timestamp": "2026-10-13 14:08:25",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 2",
+      "description": "Api terdeteksi di Area 2 (Angle: 96\u00b0, Conf: 82%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.82,
+        "bbox": [
+          152,
+          119,
+          195,
+          159
+        ],
+        "center": [
+          173,
+          139
+        ],
+        "zone": 2,
+        "angle": 96
+      }
+    },
+    {
+      "id": 98,
+      "timestamp": "2026-10-13 14:08:17",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 2",
+      "description": "Api terdeteksi di Area 2 (Angle: 85\u00b0, Conf: 86%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.86,
+        "bbox": [
+          133,
+          140,
+          179,
+          182
+        ],
+        "center": [
+          156,
+          161
+        ],
+        "zone": 2,
+        "angle": 85
+      }
+    },
+    {
+      "id": 97,
+      "timestamp": "2026-10-13 14:08:12",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 2",
+      "description": "Api terdeteksi di Area 2 (Angle: 85\u00b0, Conf: 87%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.87,
+        "bbox": [
+          132,
+          141,
+          179,
+          182
+        ],
+        "center": [
+          155,
+          161
+        ],
+        "zone": 2,
+        "angle": 85
+      }
+    },
+    {
+      "id": 96,
+      "timestamp": "2026-10-13 14:08:07",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 2",
+      "description": "Api terdeteksi di Area 2 (Angle: 85\u00b0, Conf: 86%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.86,
+        "bbox": [
+          132,
+          141,
+          178,
+          182
+        ],
+        "center": [
+          155,
+          161
+        ],
+        "zone": 2,
+        "angle": 85
+      }
+    },
+    {
+      "id": 95,
+      "timestamp": "2026-10-13 14:07:56",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 71\u00b0, Conf: 84%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.84,
+        "bbox": [
+          32,
+          134,
+          80,
+          182
+        ],
+        "center": [
+          56,
+          158
+        ],
+        "zone": 1,
+        "angle": 71
+      }
+    },
+    {
+      "id": 94,
+      "timestamp": "2026-10-13 14:07:51",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 71\u00b0, Conf: 84%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.84,
+        "bbox": [
+          32,
+          134,
+          80,
+          182
+        ],
+        "center": [
+          56,
+          158
+        ],
+        "zone": 1,
+        "angle": 71
+      }
+    },
+    {
+      "id": 93,
+      "timestamp": "2026-10-13 14:07:46",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 71\u00b0, Conf: 85%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.85,
+        "bbox": [
+          32,
+          133,
+          80,
+          182
+        ],
+        "center": [
+          56,
+          157
+        ],
+        "zone": 1,
+        "angle": 71
+      }
+    },
+    {
+      "id": 92,
+      "timestamp": "2026-10-13 14:07:40",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 71\u00b0, Conf: 84%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.84,
+        "bbox": [
+          32,
+          134,
+          80,
+          183
+        ],
+        "center": [
+          56,
+          158
+        ],
+        "zone": 1,
+        "angle": 71
+      }
+    },
+    {
+      "id": 91,
+      "timestamp": "2026-10-13 14:07:35",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 71\u00b0, Conf: 85%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.85,
+        "bbox": [
+          32,
+          133,
+          80,
+          183
+        ],
+        "center": [
+          56,
+          158
+        ],
+        "zone": 1,
+        "angle": 71
+      }
+    },
+    {
+      "id": 90,
+      "timestamp": "2026-10-13 14:07:30",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 77\u00b0, Conf: 80%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.8,
+        "bbox": [
+          43,
+          122,
+          88,
+          171
+        ],
+        "center": [
+          65,
+          146
+        ],
+        "zone": 1,
+        "angle": 77
+      }
+    },
+    {
+      "id": 89,
+      "timestamp": "2026-10-13 14:01:54",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 90%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.9,
+        "bbox": [
+          0,
+          213,
+          54,
+          239
+        ],
+        "center": [
+          27,
+          226
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 88,
+      "timestamp": "2026-10-13 14:01:49",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 90%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.9,
+        "bbox": [
+          0,
+          213,
+          54,
+          239
+        ],
+        "center": [
+          27,
+          226
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 87,
+      "timestamp": "2026-10-13 14:01:44",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 90%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.9,
+        "bbox": [
+          0,
+          213,
+          54,
+          239
+        ],
+        "center": [
+          27,
+          226
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 86,
+      "timestamp": "2026-10-13 14:01:39",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 90%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.9,
+        "bbox": [
+          0,
+          213,
+          54,
+          239
+        ],
+        "center": [
+          27,
+          226
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 85,
+      "timestamp": "2026-10-13 14:01:33",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 90%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.9,
+        "bbox": [
+          0,
+          213,
+          54,
+          239
+        ],
+        "center": [
+          27,
+          226
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 84,
+      "timestamp": "2026-10-13 14:01:28",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 90%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.9,
+        "bbox": [
+          0,
+          213,
+          54,
+          239
+        ],
+        "center": [
+          27,
+          226
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 83,
+      "timestamp": "2026-10-13 14:01:23",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 90%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.9,
+        "bbox": [
+          0,
+          213,
+          54,
+          239
+        ],
+        "center": [
+          27,
+          226
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 82,
+      "timestamp": "2026-10-13 14:01:17",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 90%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.9,
+        "bbox": [
+          0,
+          213,
+          54,
+          239
+        ],
+        "center": [
+          27,
+          226
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 81,
+      "timestamp": "2026-10-13 14:01:12",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 90%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.9,
+        "bbox": [
+          0,
+          213,
+          54,
+          239
+        ],
+        "center": [
+          27,
+          226
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 80,
+      "timestamp": "2026-10-13 14:01:07",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 90%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.9,
+        "bbox": [
+          0,
+          213,
+          54,
+          239
+        ],
+        "center": [
+          27,
+          226
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 79,
+      "timestamp": "2026-10-13 14:01:02",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 90%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.9,
+        "bbox": [
+          0,
+          213,
+          54,
+          239
+        ],
+        "center": [
+          27,
+          226
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 78,
+      "timestamp": "2026-10-13 14:00:57",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 90%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.9,
+        "bbox": [
+          0,
+          213,
+          54,
+          239
+        ],
+        "center": [
+          27,
+          226
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 77,
+      "timestamp": "2026-10-13 14:00:52",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 90%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.9,
+        "bbox": [
+          0,
+          213,
+          54,
+          239
+        ],
+        "center": [
+          27,
+          226
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 76,
+      "timestamp": "2026-10-13 14:00:47",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 89%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.89,
+        "bbox": [
+          0,
+          212,
+          55,
+          239
+        ],
+        "center": [
+          27,
+          225
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 75,
+      "timestamp": "2026-10-13 14:00:42",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 89%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.89,
+        "bbox": [
+          0,
+          212,
+          55,
+          239
+        ],
+        "center": [
+          27,
+          225
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 74,
+      "timestamp": "2026-10-13 14:00:37",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 89%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.89,
+        "bbox": [
+          0,
+          212,
+          55,
+          239
+        ],
+        "center": [
+          27,
+          225
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 73,
+      "timestamp": "2026-10-13 14:00:32",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 91%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.91,
+        "bbox": [
+          0,
+          213,
+          54,
+          239
+        ],
+        "center": [
+          27,
+          226
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 72,
+      "timestamp": "2026-10-13 14:00:27",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 91%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.91,
+        "bbox": [
+          0,
+          213,
+          54,
+          239
+        ],
+        "center": [
+          27,
+          226
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 71,
+      "timestamp": "2026-10-13 14:00:22",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 91%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.91,
+        "bbox": [
+          0,
+          213,
+          54,
+          239
+        ],
+        "center": [
+          27,
+          226
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 70,
+      "timestamp": "2026-10-13 14:00:17",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 91%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.91,
+        "bbox": [
+          0,
+          213,
+          54,
+          239
+        ],
+        "center": [
+          27,
+          226
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 69,
+      "timestamp": "2026-10-13 14:00:12",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 91%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.91,
+        "bbox": [
+          0,
+          213,
+          54,
+          239
+        ],
+        "center": [
+          27,
+          226
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 68,
+      "timestamp": "2026-10-13 14:00:06",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 91%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.91,
+        "bbox": [
+          0,
+          213,
+          54,
+          239
+        ],
+        "center": [
+          27,
+          226
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 67,
+      "timestamp": "2026-10-13 14:00:01",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 90%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.9,
+        "bbox": [
+          0,
+          213,
+          55,
+          239
+        ],
+        "center": [
+          27,
+          226
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 66,
+      "timestamp": "2026-10-13 13:59:56",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 90%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.9,
+        "bbox": [
+          0,
+          213,
+          55,
+          239
+        ],
+        "center": [
+          27,
+          226
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 65,
+      "timestamp": "2026-10-13 13:59:51",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 90%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.9,
+        "bbox": [
+          0,
+          213,
+          55,
+          239
+        ],
+        "center": [
+          27,
+          226
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 64,
+      "timestamp": "2026-10-13 13:59:46",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 90%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.9,
+        "bbox": [
+          0,
+          213,
+          55,
+          239
+        ],
+        "center": [
+          27,
+          226
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 63,
+      "timestamp": "2026-10-13 13:59:41",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 88%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.88,
+        "bbox": [
+          0,
+          213,
+          56,
+          240
+        ],
+        "center": [
+          28,
+          226
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 62,
+      "timestamp": "2026-10-13 13:59:36",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 88%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.88,
+        "bbox": [
+          0,
+          213,
+          56,
+          240
+        ],
+        "center": [
+          28,
+          226
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 61,
+      "timestamp": "2026-10-13 13:59:31",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 88%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.88,
+        "bbox": [
+          0,
+          212,
+          56,
+          240
+        ],
+        "center": [
+          28,
+          226
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 60,
+      "timestamp": "2026-10-13 13:59:26",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 88%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.88,
+        "bbox": [
+          0,
+          212,
+          56,
+          240
+        ],
+        "center": [
+          28,
+          226
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 59,
+      "timestamp": "2026-10-13 13:59:21",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 88%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.88,
+        "bbox": [
+          0,
+          213,
+          56,
+          240
+        ],
+        "center": [
+          28,
+          226
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 58,
+      "timestamp": "2026-10-13 13:59:16",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 88%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.88,
+        "bbox": [
+          0,
+          212,
+          54,
+          239
+        ],
+        "center": [
+          27,
+          225
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 57,
+      "timestamp": "2026-10-13 13:59:10",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 90%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.9,
+        "bbox": [
+          0,
+          212,
+          54,
+          239
+        ],
+        "center": [
+          27,
+          225
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 56,
+      "timestamp": "2026-10-13 13:59:05",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 89%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.89,
+        "bbox": [
+          0,
+          212,
+          55,
+          239
+        ],
+        "center": [
+          27,
+          225
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 55,
+      "timestamp": "2026-10-13 13:59:00",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 87%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.87,
+        "bbox": [
+          0,
+          212,
+          54,
+          239
+        ],
+        "center": [
+          27,
+          225
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 54,
+      "timestamp": "2026-10-13 13:58:55",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 88%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.88,
+        "bbox": [
+          0,
+          213,
+          56,
+          240
+        ],
+        "center": [
+          28,
+          226
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 53,
+      "timestamp": "2026-10-13 13:58:50",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 88%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.88,
+        "bbox": [
+          0,
+          212,
+          57,
+          240
+        ],
+        "center": [
+          28,
+          226
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 52,
+      "timestamp": "2026-10-13 13:58:45",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 90%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.9,
+        "bbox": [
+          0,
+          214,
+          55,
+          239
+        ],
+        "center": [
+          27,
+          226
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 51,
+      "timestamp": "2026-10-13 13:58:40",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 90%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.9,
+        "bbox": [
+          0,
+          212,
+          54,
+          239
+        ],
+        "center": [
+          27,
+          225
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 50,
+      "timestamp": "2026-10-13 13:58:35",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 89%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.89,
+        "bbox": [
+          0,
+          213,
+          56,
+          240
+        ],
+        "center": [
+          28,
+          226
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 49,
+      "timestamp": "2026-10-13 13:58:30",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 88%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.88,
+        "bbox": [
+          0,
+          213,
+          54,
+          239
+        ],
+        "center": [
+          27,
+          226
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 48,
+      "timestamp": "2026-10-13 13:58:24",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 88%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.88,
+        "bbox": [
+          0,
+          215,
+          56,
+          240
+        ],
+        "center": [
+          28,
+          227
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 47,
+      "timestamp": "2026-10-13 13:58:19",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 90%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.9,
+        "bbox": [
+          0,
+          212,
+          55,
+          239
+        ],
+        "center": [
+          27,
+          225
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 46,
+      "timestamp": "2026-10-13 13:58:14",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 90%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.9,
+        "bbox": [
+          0,
+          212,
+          54,
+          239
+        ],
+        "center": [
+          27,
+          225
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 45,
+      "timestamp": "2026-10-13 13:58:09",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 90%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.9,
+        "bbox": [
+          0,
+          212,
+          55,
+          239
+        ],
+        "center": [
+          27,
+          225
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 44,
+      "timestamp": "2026-10-13 13:58:04",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 88%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.88,
+        "bbox": [
+          0,
+          212,
+          54,
+          239
+        ],
+        "center": [
+          27,
+          225
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 43,
+      "timestamp": "2026-10-13 13:56:18",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 90%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.9,
+        "bbox": [
+          0,
+          213,
+          56,
+          240
+        ],
+        "center": [
+          28,
+          226
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 42,
+      "timestamp": "2026-10-13 13:56:13",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 88%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.88,
+        "bbox": [
+          0,
+          213,
+          56,
+          240
+        ],
+        "center": [
+          28,
+          226
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 41,
+      "timestamp": "2026-10-13 13:56:08",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 15\u00b0, Conf: 83%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.83,
+        "bbox": [
+          0,
+          211,
+          55,
+          239
+        ],
+        "center": [
+          27,
+          225
+        ],
+        "zone": 0,
+        "angle": 15
+      }
+    },
+    {
+      "id": 40,
+      "timestamp": "2026-10-13 13:56:03",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 74\u00b0, Conf: 87%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.87,
+        "bbox": [
+          38,
+          126,
+          84,
+          174
+        ],
+        "center": [
+          61,
+          150
+        ],
+        "zone": 1,
+        "angle": 74
+      }
+    },
+    {
+      "id": 39,
+      "timestamp": "2026-10-13 13:55:58",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 74\u00b0, Conf: 87%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.87,
+        "bbox": [
+          38,
+          126,
+          84,
+          173
+        ],
+        "center": [
+          61,
+          149
+        ],
+        "zone": 1,
+        "angle": 74
+      }
+    },
+    {
+      "id": 38,
+      "timestamp": "2026-10-13 13:55:52",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 74\u00b0, Conf: 87%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.87,
+        "bbox": [
+          38,
+          126,
+          84,
+          173
+        ],
+        "center": [
+          61,
+          149
+        ],
+        "zone": 1,
+        "angle": 74
+      }
+    },
+    {
+      "id": 37,
+      "timestamp": "2026-10-13 13:55:47",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 74\u00b0, Conf: 87%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.87,
+        "bbox": [
+          38,
+          127,
+          85,
+          173
+        ],
+        "center": [
+          61,
+          150
+        ],
+        "zone": 1,
+        "angle": 74
+      }
+    },
+    {
+      "id": 36,
+      "timestamp": "2026-10-13 13:55:42",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 74\u00b0, Conf: 87%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.87,
+        "bbox": [
+          38,
+          126,
+          84,
+          173
+        ],
+        "center": [
+          61,
+          149
+        ],
+        "zone": 1,
+        "angle": 74
+      }
+    },
+    {
+      "id": 35,
+      "timestamp": "2026-10-13 13:55:37",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 74\u00b0, Conf: 86%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.86,
+        "bbox": [
+          38,
+          126,
+          84,
+          173
+        ],
+        "center": [
+          61,
+          149
+        ],
+        "zone": 1,
+        "angle": 74
+      }
+    },
+    {
+      "id": 34,
+      "timestamp": "2026-10-13 13:55:32",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 74\u00b0, Conf: 86%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.86,
+        "bbox": [
+          38,
+          127,
+          84,
+          173
+        ],
+        "center": [
+          61,
+          150
+        ],
+        "zone": 1,
+        "angle": 74
+      }
+    },
+    {
+      "id": 33,
+      "timestamp": "2026-10-13 13:55:27",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 74\u00b0, Conf: 88%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.88,
+        "bbox": [
+          38,
+          126,
+          84,
+          173
+        ],
+        "center": [
+          61,
+          149
+        ],
+        "zone": 1,
+        "angle": 74
+      }
+    },
+    {
+      "id": 32,
+      "timestamp": "2026-10-13 13:55:22",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 74\u00b0, Conf: 87%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.87,
+        "bbox": [
+          38,
+          126,
+          84,
+          174
+        ],
+        "center": [
+          61,
+          150
+        ],
+        "zone": 1,
+        "angle": 74
+      }
+    },
+    {
+      "id": 31,
+      "timestamp": "2026-10-13 13:55:16",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 74\u00b0, Conf: 86%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.86,
+        "bbox": [
+          38,
+          126,
+          84,
+          174
+        ],
+        "center": [
+          61,
+          150
+        ],
+        "zone": 1,
+        "angle": 74
+      }
+    },
+    {
+      "id": 30,
+      "timestamp": "2026-10-13 13:55:11",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 75\u00b0, Conf: 84%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.84,
+        "bbox": [
+          37,
+          124,
+          88,
+          174
+        ],
+        "center": [
+          62,
+          149
+        ],
+        "zone": 1,
+        "angle": 75
+      }
+    },
+    {
+      "id": 29,
+      "timestamp": "2026-10-13 13:54:30",
+      "type": "POHON_DITEBANG",
+      "zone": "Area 1",
+      "description": "Pembalakan liar / pohon ditebang di Area 1 (Conf: 84%)",
+      "details": {
+        "class_id": 0,
+        "label": "Pohon yang ditebang",
+        "confidence": 0.84,
+        "bbox": [
+          28,
+          135,
+          86,
+          185
+        ],
+        "center": [
+          57,
+          160
+        ],
+        "zone": 1,
+        "angle": 71
+      }
+    },
+    {
+      "id": 28,
+      "timestamp": "2026-10-13 13:54:10",
+      "type": "POHON_DITEBANG",
+      "zone": "Area 1",
+      "description": "Pembalakan liar / pohon ditebang di Area 1 (Conf: 70%)",
+      "details": {
+        "class_id": 0,
+        "label": "Pohon yang ditebang",
+        "confidence": 0.7,
+        "bbox": [
+          27,
+          134,
+          86,
+          187
+        ],
+        "center": [
+          56,
+          160
+        ],
+        "zone": 1,
+        "angle": 71
+      }
+    },
+    {
+      "id": 27,
+      "timestamp": "2026-10-13 13:53:31",
+      "type": "OBJEK_ULTRASONIK",
+      "zone": "Area Sensor Ultrasonik",
+      "description": "Objek terdeteksi dalam radius dekat: 2.4 cm",
+      "details": {
+        "distance_cm": 2.4
+      }
+    },
+    {
+      "id": 26,
+      "timestamp": "2026-10-13 13:53:04",
+      "type": "POHON_DITEBANG",
+      "zone": "Area 1",
+      "description": "Pembalakan liar / pohon ditebang di Area 1 (Conf: 83%)",
+      "details": {
+        "class_id": 0,
+        "label": "Pohon yang ditebang",
+        "confidence": 0.83,
+        "bbox": [
+          27,
+          145,
+          88,
+          191
+        ],
+        "center": [
+          57,
+          168
+        ],
+        "zone": 1,
+        "angle": 71
+      }
+    },
+    {
+      "id": 25,
+      "timestamp": "2026-10-13 13:36:06",
+      "type": "POHON_DITEBANG",
+      "zone": "Area 1",
+      "description": "Pembalakan liar / pohon ditebang di Area 1 (Conf: 80%)",
+      "details": {
+        "class_id": 0,
+        "label": "Pohon yang ditebang",
+        "confidence": 0.8,
+        "bbox": [
+          28,
+          135,
+          93,
+          191
+        ],
+        "center": [
+          60,
+          163
+        ],
+        "zone": 1,
+        "angle": 74
+      }
+    },
+    {
+      "id": 24,
+      "timestamp": "2026-10-13 13:35:46",
+      "type": "POHON_DITEBANG",
+      "zone": "Area 1",
+      "description": "Pembalakan liar / pohon ditebang di Area 1 (Conf: 86%)",
+      "details": {
+        "class_id": 0,
+        "label": "Pohon yang ditebang",
+        "confidence": 0.86,
+        "bbox": [
+          28,
+          134,
+          90,
+          189
+        ],
+        "center": [
+          59,
+          161
+        ],
+        "zone": 1,
+        "angle": 73
+      }
+    },
+    {
+      "id": 23,
+      "timestamp": "2026-10-13 13:34:04",
+      "type": "POHON_JATUH_ALAMI",
+      "zone": "Area 1",
+      "description": "Pohon tumbang alami di Area 1 (Conf: 48%)",
+      "details": {
+        "class_id": 1,
+        "label": "Pohon jatuh alami",
+        "confidence": 0.48,
+        "bbox": [
+          62,
+          105,
+          96,
+          138
+        ],
+        "center": [
+          79,
+          121
+        ],
+        "zone": 1,
+        "angle": 88
+      }
+    },
+    {
+      "id": 22,
+      "timestamp": "2026-10-13 13:29:00",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 80\u00b0, Conf: 84%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.84,
+        "bbox": [
+          44,
+          140,
+          92,
+          188
+        ],
+        "center": [
+          68,
+          164
+        ],
+        "zone": 1,
+        "angle": 80
+      }
+    },
+    {
+      "id": 21,
+      "timestamp": "2026-10-13 13:28:55",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 19\u00b0, Conf: 78%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.78,
+        "bbox": [
+          5,
+          199,
+          63,
+          240
+        ],
+        "center": [
+          34,
+          219
+        ],
+        "zone": 0,
+        "angle": 19
+      }
+    },
+    {
+      "id": 20,
+      "timestamp": "2026-10-13 13:28:50",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 18\u00b0, Conf: 74%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.74,
+        "bbox": [
+          3,
+          199,
+          63,
+          240
+        ],
+        "center": [
+          33,
+          219
+        ],
+        "zone": 0,
+        "angle": 18
+      }
+    },
+    {
+      "id": 19,
+      "timestamp": "2026-10-13 13:28:45",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 18\u00b0, Conf: 73%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.73,
+        "bbox": [
+          3,
+          198,
+          63,
+          240
+        ],
+        "center": [
+          33,
+          219
+        ],
+        "zone": 0,
+        "angle": 18
+      }
+    },
+    {
+      "id": 18,
+      "timestamp": "2026-10-13 13:28:40",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 19\u00b0, Conf: 77%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.77,
+        "bbox": [
+          5,
+          199,
+          63,
+          240
+        ],
+        "center": [
+          34,
+          219
+        ],
+        "zone": 0,
+        "angle": 19
+      }
+    },
+    {
+      "id": 17,
+      "timestamp": "2026-10-13 13:28:35",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 18\u00b0, Conf: 73%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.73,
+        "bbox": [
+          4,
+          198,
+          63,
+          240
+        ],
+        "center": [
+          33,
+          219
+        ],
+        "zone": 0,
+        "angle": 18
+      }
+    },
+    {
+      "id": 16,
+      "timestamp": "2026-10-13 13:28:30",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 18\u00b0, Conf: 79%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.79,
+        "bbox": [
+          4,
+          199,
+          63,
+          240
+        ],
+        "center": [
+          33,
+          219
+        ],
+        "zone": 0,
+        "angle": 18
+      }
+    },
+    {
+      "id": 15,
+      "timestamp": "2026-10-13 13:28:25",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 19\u00b0, Conf: 79%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.79,
+        "bbox": [
+          5,
+          200,
+          63,
+          240
+        ],
+        "center": [
+          34,
+          220
+        ],
+        "zone": 0,
+        "angle": 19
+      }
+    },
+    {
+      "id": 14,
+      "timestamp": "2026-10-13 13:28:16",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 12\u00b0, Conf: 68%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.68,
+        "bbox": [
+          0,
+          193,
+          45,
+          239
+        ],
+        "center": [
+          22,
+          216
+        ],
+        "zone": 0,
+        "angle": 12
+      }
+    },
+    {
+      "id": 13,
+      "timestamp": "2026-10-13 13:28:11",
+      "type": "API_TERDETEKSI",
+      "zone": "Area Pantau Hutan",
+      "description": "Api terdeteksi di Area Pantau Hutan (Angle: 12\u00b0, Conf: 64%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.64,
+        "bbox": [
+          0,
+          194,
+          45,
+          239
+        ],
+        "center": [
+          22,
+          216
+        ],
+        "zone": 0,
+        "angle": 12
+      }
+    },
+    {
+      "id": 12,
+      "timestamp": "2026-10-13 13:28:06",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 83\u00b0, Conf: 86%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.86,
+        "bbox": [
+          48,
+          125,
+          97,
+          175
+        ],
+        "center": [
+          72,
+          150
+        ],
+        "zone": 1,
+        "angle": 83
+      }
+    },
+    {
+      "id": 11,
+      "timestamp": "2026-10-13 13:28:01",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 83\u00b0, Conf: 86%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.86,
+        "bbox": [
+          48,
+          125,
+          97,
+          175
+        ],
+        "center": [
+          72,
+          150
+        ],
+        "zone": 1,
+        "angle": 83
+      }
+    },
+    {
+      "id": 10,
+      "timestamp": "2026-10-13 12:52:14",
+      "type": "OBJEK_ULTRASONIK",
+      "zone": "Area Sensor Ultrasonik",
+      "description": "Objek terdeteksi dalam radius dekat: 4.0 cm",
+      "details": {
+        "distance_cm": 4.0
+      }
+    },
+    {
+      "id": 9,
+      "timestamp": "2026-10-13 12:49:20",
+      "type": "POHON_JATUH_ALAMI",
+      "zone": "Area 1",
+      "description": "Pohon tumbang alami di Area 1 (Conf: 91%)",
+      "details": {
+        "class_id": 1,
+        "label": "Pohon jatuh alami",
+        "confidence": 0.91,
+        "bbox": [
+          29,
+          133,
+          95,
+          190
+        ],
+        "center": [
+          62,
+          161
+        ],
+        "zone": 1,
+        "angle": 75
+      }
+    },
+    {
+      "id": 8,
+      "timestamp": "2026-10-13 12:48:53",
+      "type": "POHON_DITEBANG",
+      "zone": "Area 1",
+      "description": "Pembalakan liar / pohon ditebang di Area 1 (Conf: 49%)",
+      "details": {
+        "class_id": 0,
+        "label": "Pohon yang ditebang",
+        "confidence": 0.49,
+        "bbox": [
+          46,
+          139,
+          89,
+          189
+        ],
+        "center": [
+          67,
+          164
+        ],
+        "zone": 1,
+        "angle": 79
+      }
+    },
+    {
+      "id": 7,
+      "timestamp": "2026-10-13 12:48:33",
+      "type": "POHON_DITEBANG",
+      "zone": "Area 1",
+      "description": "Pembalakan liar / pohon ditebang di Area 1 (Conf: 61%)",
+      "details": {
+        "class_id": 0,
+        "label": "Pohon yang ditebang",
+        "confidence": 0.61,
+        "bbox": [
+          29,
+          133,
+          94,
+          185
+        ],
+        "center": [
+          61,
+          159
+        ],
+        "zone": 1,
+        "angle": 74
+      }
+    },
+    {
+      "id": 6,
+      "timestamp": "2026-10-13 12:48:22",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 85\u00b0, Conf: 85%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.85,
+        "bbox": [
+          53,
+          131,
+          98,
+          180
+        ],
+        "center": [
+          75,
+          155
+        ],
+        "zone": 1,
+        "angle": 85
+      }
+    },
+    {
+      "id": 5,
+      "timestamp": "2026-10-13 12:48:17",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 65\u00b0, Conf: 71%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.71,
+        "bbox": [
+          13,
+          137,
+          83,
+          197
+        ],
+        "center": [
+          48,
+          167
+        ],
+        "zone": 1,
+        "angle": 65
+      }
+    },
+    {
+      "id": 4,
+      "timestamp": "2026-10-11 12:20:43",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 82\u00b0, Conf: 82%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.82,
+        "bbox": [
+          47,
+          113,
+          96,
+          163
+        ],
+        "center": [
+          71,
+          138
+        ],
+        "zone": 1,
+        "angle": 82
+      }
+    },
+    {
+      "id": 3,
+      "timestamp": "2026-10-11 12:20:38",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 83\u00b0, Conf: 79%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.79,
+        "bbox": [
+          48,
+          112,
+          97,
+          163
+        ],
+        "center": [
+          72,
+          137
+        ],
+        "zone": 1,
+        "angle": 83
+      }
+    },
+    {
+      "id": 2,
+      "timestamp": "2026-10-11 12:20:02",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 87\u00b0, Conf: 80%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.8,
+        "bbox": [
+          55,
+          104,
+          102,
+          147
+        ],
+        "center": [
+          78,
+          125
+        ],
+        "zone": 1,
+        "angle": 87
+      }
+    },
+    {
+      "id": 1,
+      "timestamp": "2026-10-11 12:19:57",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Api terdeteksi di Area 1 (Angle: 88\u00b0, Conf: 76%)",
+      "details": {
+        "class_id": 2,
+        "label": "Api",
+        "confidence": 0.76,
+        "bbox": [
+          62,
+          84,
+          97,
+          126
+        ],
+        "center": [
+          79,
+          105
+        ],
+        "zone": 1,
+        "angle": 88
+      }
+    }
+  ],
+  "system_status": {
+    "esp32_cam_connected": true,
+    "esp32_main_connected": true,
+    "fire_extinguish_mode": "AUTO",
+    "last_sync": "2026-10-13 14:34:31"
+  }
+}

@@ -1,87 +1,111 @@
 # 🌲 AIoT Intelligence Forest Protection System
 
-Sistem perlindungan hutan cerdas terintegrasi berbasis **Artificial Intelligence of Things (AIoT)** yang menggabungkan penglihatan komputer (**Computer Vision & YOLOv8**), mikrokontroler **ESP32-CAM** dan **ESP32 Main Actuator Node**, **Web Dashboard Interaktif (Monitoring & Kontrol Komponen)**, **Penyimpanan Database Lokal (Local JSON Engine)**, serta **Sistem Notifikasi Email Otomatis ke Petugas** via protokol **TCP/IP Socket**, **WebSockets**, dan **SMTP**.
+Sistem perlindungan hutan terpadu berbasis **Artificial Intelligence of Things (AIoT)** yang menggabungkan penglihatan komputer (**Computer Vision & YOLOv8**), mikrokontroler **ESP32-CAM** dan **ESP32 Main Actuator Node**, **Web Dashboard Interaktif (Monitoring & Kontrol Komponen)**, **Kalibrasi Visual Sudut Servo 0°–90° dengan Proyeksi Vektor Presisi**, **Database Lokal Persisten dengan Ekspor CSV Excel**, **Sinkronisasi Cloud Global (Firebase Realtime Database)**, serta **Sistem Notifikasi Email Otomatis ke Petugas** via protokol **TCP/IP Socket**, **WebSockets (Socket.IO)**, dan **SMTP**.
 
 ---
 
-## 📌 Fitur Utama Sistem
+## 📌 Fitur Unggulan Sistem
 
-### 1. 🧠 AI Vision Tracking & Klasifikasi Multi-Insiden (ESP32-CAM + Python Engine)
-Sistem kamera pemantau memproses video streaming resolusi tinggi secara *real-time* untuk mendeteksi berbagai ancaman kelestarian hutan:
+### 1. 🧠 AI Vision Tracking & Klasifikasi Multi-Insiden (ESP32-CAM + YOLOv8)
+Sistem memproses streaming video resolusi tinggi secara *real-time* untuk mendeteksi 3 kategori ancaman utama:
 - **🍃 Pohon Jatuh Alami (*Natural Tree Fall*)**:
-  - Mendeteksi pohon yang tumbang atau patah akibat faktor usia, cuaca ekstrem, atau angin kencang.
-  - **Database Lokal**: Menambahkan akumulasi counter (`pohon_jatuh_alami` + 1) dan mencatat log kejadian lengkap dengan timestamp (tanggal & jam), posisi sektor/zona, serta tingkat keyakinan (*confidence*).
-  - **Notifikasi Email**: Mengirimkan email laporan insiden secara otomatis ke Petugas Konservasi & Lingkungan Hidup lengkap dengan deskripsi detail dan lampiran foto snapshot kamera.
+  - Mengidentifikasi pohon roboh atau patah akibat cuaca ekstrem/usia.
+  - **Database Lokal**: Menambah counter akumulasi (`pohon_jatuh_alami` + 1) dan mencatat log lengkap (timestamp tanggal & jam, sektor/zona, serta *confidence score*).
+  - **Email Otomatis**: Mengirimkan laporan insiden ke Petugas Konservasi & Lingkungan Hidup disertai lampiran foto snapshot pohon tumbang.
 - **🪓 Pohon Ditebang (*Illegal Logging Detection*)**:
-  - Mendeteksi tanda-tanda penebangan liar, sisa potongan pohon, atau aktivitas pembalakan liar di area lindung.
-  - **Database Lokal**: Menambahkan akumulasi counter (`pohon_ditebang` + 1) dan mencatat insiden darurat ke database lokal dengan koordinat *bounding box*.
-  - **Notifikasi Email**: Mengirimkan email darurat / *alert* cepat ke Polisi Kehutanan & Regu Patroli Hutan berisi bukti visual kejadian untuk penindakan cepat di lokasi.
-- **🔥 Deteksi Titik Api & Pemadaman Otomatis Terarah (*Precision Fire Suppression*)**:
-  - Membagi area pantauan menjadi **Area 1** (sisi kiri) dan **Area 2** (sisi kanan).
-  - Menghitung koordinat sudut target api secara presisi ($0^\circ - 90^\circ$ / $0^\circ - 180^\circ$) berdasarkan titik kalibrasi visual.
-  - Menggerakkan **Servo Tower 1 (GPIO 16)** atau **Servo Tower 2 (GPIO 17)** mengarahkan semprotan air ke pusat titik api.
-  - Mengaktifkan **Relay 1 (GPIO 25)** atau **Relay 2 (GPIO 26)** untuk menyalakan pompa air pemadam.
-  - **Mode Ganti-Gantian (*Mutual Exclusion*)**: Jika api muncul di kedua area secara bersamaan, sistem secara cerdas menyemprot bergantian (masing-masing 2.5 detik) guna mencegah penurunan tegangan (*voltage drop / brownout*) pada ESP32.
-  - Mengaktifkan sirine darurat **Passive Buzzer (GPIO 18)** dan indikator **RGB LED (Merah)**.
-  - **Eskalasi Damkar**: Apabila api terdeteksi tidak kunjung padam melebihi ambang batas waktu (15 detik), sistem otomatis mengirimkan **Email Dispatch Darurat ke Petugas Pemadam Kebakaran (Damkar)** disertai foto snapshot kobaran api.
+  - Mendeteksi indikasi penebangan liar, sisa potongan pohon, atau aktivitas pembalakan ilegal di area konservasi.
+  - **Database Lokal**: Menambah counter akumulasi (`pohon_ditebang` + 1) dan mencatat kejadian dengan koordinat bounding box.
+  - **Email Otomatis**: Mengirimkan peringatan darurat ke Polisi Kehutanan & Regu Patroli Hutan dengan lampiran bukti visual.
+- **🔥 Deteksi Titik Api & Pemadaman Presisi Terarah (*Precision Fire Suppression*)**:
+  - Membagi area pantauan kamera menjadi **Area 1** (sisi kiri) dan **Area 2** (sisi kanan).
+  - Menghitung koordinat sudut target api secara presisi ($0^\circ - 90^\circ$) memanfaatkan vektor referensi terkalibrasi.
+  - Mengarahkan **Servo Tower 1 (GPIO 16)** atau **Servo Tower 2 (GPIO 17)** langsung ke posisi titik api.
+  - Mengaktifkan **Relay 1 (GPIO 25)** atau **Relay 2 (GPIO 26)** untuk menyemprotkan air pemadam.
+  - **Mode Ganti-Gantian (*Mutual Exclusion*)**: Jika api muncul di kedua area secara simultan, pompa menyemprot bergantian (masing-masing 2.5 detik) guna mencegah penurunan tegangan (*voltage drop / brownout*) pada mikrokontroler.
+  - **Eskalasi Damkar**: Jika api tidak kunjung padam melampaui batas waktu (15 detik), sistem otomatis mengirimkan **Email Dispatch Darurat ke Pemadam Kebakaran (Damkar)** disertai foto kobaran api.
 
 ---
 
-### 2. 🌐 Web Dashboard Interaktif: Monitoring Real-Time & Kendali Komponen
-Web dashboard modern berbasis **Flask**, **HTML5/CSS3 Cyber-Eco UI**, dan **WebSockets (Socket.IO)** dengan dua fungsi utama:
-- **📊 Pusat Monitoring (*Live Surveillance*)**:
-  - Streaming video kamera *live* (MJPEG) dengan overlay *bounding box* AI, garis batas zona (Area 1 & Area 2), dan *target reticle*.
-  - Indikator sensor ultrasonik *proximity bar* real-time (deteksi objek 1–8 cm).
-  - Kartu metrik statistik terpadu (jumlah pohon jatuh alami, pohon ditebang, insiden kebakaran, dan intrusi ultrasonik).
-  - Indikator status koneksi perangkat secara langsung (**ESP32-CAM**, **ESP32 Main Node**, dan **Server Hub**).
-  - Tabel riwayat insiden (*live event table*) yang memperbarui data secara instan tanpa perlu me-refresh halaman browser.
-- **🎛️ Kendali Komponen Jarak Jauh (*Remote Actuator Control*)**:
-  - **Kontrol Servo Nozzle**: Slider pengatur sudut Servo Tower 1 dan Servo Tower 2 ($0^\circ - 180^\circ$) dengan respons instan (< 5 ms).
-  - **Kontrol Pompa Air (Relay)**: Tombol *Spray / Stop* mandiri untuk mengaktifkan Relay Pompa Wilayah 1 dan Relay Pompa Wilayah 2.
-  - **Uji Sirine Buzzer**: Tombol tes sirine darurat (*Beep Test*).
-  - **Kontrol Indikator RGB LED**: Pilihan palet warna langsung dari web (Merah, Hijau, Kuning, Biru).
-  - **Modal Kalibrasi 4 Titik Area**: Mengatur batas koordinat Area 1 dan Area 2 langsung melalui antarmuka web.
-  - **Modal Pengaturan Jaringan Dinamis**: Mengubah alamat IP ESP32 Main dan ESP32-CAM *on-the-fly* tanpa perlu me-restart server Python.
+### 2. 🎯 Kalibrasi Visual Garis Sudut 0° & 90° Servo (`calibrate_zones.py`)
+Sistem dilengkapi alat kalibrasi interaktif berbasis OpenCV untuk menjamin nozel pemadam bergerak akurat ke setiap sudut api:
+- **Kalibrasi Titik Sudut Interaktif**:
+  - Cukup jalankan `python calibrate_zones.py`.
+  - Klik dan geser titik **S1: 0°**, **S1: 90°**, **S2: 0°**, dan **S2: 90°** langsung pada jendela video.
+  - Titik referensi ini membentuk vektor dasar sudut servo untuk pemetaan matematis.
+- **Proyeksi Vektor Matematika (*Vector Dot-Product Projection*)**:
+  - Koordinat api $(X_f, Y_f)$ diproyeksikan secara tegak lurus ke garis vektor $0^\circ \to 90^\circ$.
+  - Menghasilkan nilai sudut kontinu antara $0^\circ$ dan $90^\circ$ yang akurat sesuai posisi fisik api di lapangan.
+- **Auto-Reload Tanpa Restart Server**:
+  - Setiap kali konfigurasi disimpan ke `data/zones_config.json`, backend `server.py` mendeteksi perubahan berkas secara dinamis dan langsung memperbarui garis zona tanpa perlu me-restart server!
+- **Overlay Video Real-Time**:
+  - Streaming kamera di Web Dashboard menampilkan garis referensi $0^\circ - 90^\circ$, poligon batas zona Area 1 & 2, serta *crosshair reticle* target api lengkap dengan sudut derajat aktif.
 
 ---
 
-### 3. 💾 Database Lokal Persisten (*Local JSON Database Engine*)
-Penyimpanan seluruh data sistem menggunakan basis data lokal terstruktur (`data/forest_database.json`) yang dikelola oleh `DatabaseManager` berbasis Python dengan proteksi *thread-safe mutex lock*:
-- **Penyimpanan Mandiri & Bebas Ketergantungan**: Seluruh data tersimpan di penyimpanan lokal server, menjamin keamanan privasi data dan tetap berfungsi optimal tanpa koneksi internet cloud eksternal.
-- **Perhitungan & Agregasi Otomatis**: Menyimpan penghitungan kumulatif (*counters*) untuk setiap kategori kejadian (pohon jatuh alami, pohon ditebang, insiden api, objek ultrasonik).
-- **Log Kejadian Berwaktu Lengkap (*Timestamped Event Logging*)**: Setiap peristiwa menyimpan ID transaksi, tanggal & waktu kejadian presisi (`YYYY-MM-DD HH:MM:SS`), tipe peristiwa, nama sektor/zona, deskripsi kejadian, serta metadata teknis (*bounding box coordinates*, *AI confidence score*, sudut servo).
-- **Pengambilan & Analisis Data Fleksibel**:
-  - Data historis dapat diambil sewaktu-waktu melalui antarmuka Web Dashboard maupun REST API endpoint (`GET /api/database`).
-  - Memudahkan petugas melakukan rekapitulasi data harian/bulanan, evaluasi titik rawan pembalakan liar, dan statistik kebakaran hutan.
+### 3. ⏱️ Stabilizer Sudut Servo & Delay Pembaruan 2 Detik
+Untuk mencegah motor servo mengalami *jitter* (getaran liar akibat fluktuasi bounding box AI frame-ke-frame), sistem menerapkan logika kontrol cerdas:
+- **Initial Target Lock**: Saat api pertama kali terdeteksi stabil, servo langsung mengunci sudut target tanpa penundaan.
+- **Interval Pembaruan 2.0 Detik (`ANGLE_UPDATE_INTERVAL = 2.0`)**: Penyesuaian sudut berikutnya hanya dikirim jika api masih menyala setelah interval 2 detik terlampaui.
+- **Toleransi Deadband ($\ge 5^\circ$)**: Perubahan posisi api yang kecil ($< 5^\circ$) tidak akan menggerakkan servo, menjaga ketahanan mekanis roda gigi servo.
+- **Anti-Flicker Debounce**:
+  - Api harus terdeteksi konsisten selama **1.5 detik** sebelum aktuator pemadam diaktifkan.
+  - Pompa tetap menyemprot selama **3.0 detik** setelah api tidak lagi terlihat untuk memastikan bara api benar-benar padam (*hold debounce*).
 
 ---
 
-### 4. 📧 Sistem Notifikasi Email Petugas Terpadu (`email_notifier.py`)
-Modul notifikasi otomatis via protokol **SMTP (Gmail App Password / Custom SMTP)** dengan fitur:
-- **Eskalasi Multi-Pihak**:
-  1. *Laporan Pohon Tumbang Alami* $\rightarrow$ Petugas Konservasi Hutan & Tim Perawatan Pohon.
-  2. *Laporan Pohon Ditebang (Illegal Logging)* $\rightarrow$ Petugas Keamanan Hutan / Polisi Kehutanan.
-  3. *Laporan Darurat Kebakaran Hutan* $\rightarrow$ Unit Armada Pemadam Kebakaran (Damkar).
-- **Lampiran Snapshot Foto Otomatis**: Setiap email menyertakan foto tangkapan layar (*snapshot*) saat insiden terdeteksi sebagai bukti otentik.
-- **Anti-Spam & Cooldown**: Dilengkapi pembatas pengiriman agar email tidak menumpuk dalam satu insiden berkelanjutan.
-- **Asynchronous Non-Blocking**: Proses pengiriman email berjalan pada *background thread*, sehingga tidak menghambat pemrosesan AI Vision dan pergerakan servo pemadam.
-- **Buku Catatan Log Lokal**: Setiap dispatch email tercatat resmi di berkas `data/email_alerts.log`.
+### 4. 🌐 Web Dashboard Interaktif & Multi-Device Mobile Access
+Web dashboard modern berbasis **Flask**, **HTML5/CSS3 Cyber-Eco UI**, dan **WebSockets (Socket.IO)**:
+- **Pusat Monitoring Real-Time**:
+  - Live video streaming (MJPEG) dengan overlay deteksi YOLO, garis sudut kalibrasi, dan target reticle.
+  - Indikator meteran jarak sensor ultrasonik (*proximity bar* 0–30 cm).
+  - 4 Kartu metrik statistik insiden yang diperbarui secara langsung.
+  - Indikator koneksi perangkat (ESP32-CAM, ESP32 Main Node, Server Hub).
+- **Kendali Manual Aktuator**:
+  - Slider pengatur sudut Servo Tower 1 & 2 ($0^\circ - 180^\circ$) dengan respons instan (< 5 ms).
+  - Tombol uji semprot pompa air (Relay 1 & Relay 2).
+  - Tombol uji nada buzzer sirine (*Beep Test*).
+  - Pemilih warna lampu LED RGB (Merah, Hijau, Kuning, Biru).
+- **Akses Jaringan WiFi Fleksibel**:
+  - Terdapat tombol **Salin Link WiFi** untuk membuka dashboard dari HP, tablet, atau laptop lain dalam jaringan WiFi yang sama.
 
 ---
 
-### 5. 📡 Ultrasonic Radar Sweeper (HC-SR04)
-- Memantau jarak halangan di perimeter tanah secara kontinyu.
-- Jika objek/orang/hewan asing terdeteksi dalam zona kritis **1 - 8 cm**:
-  - Menyalakan indikator **RGB LED Kuning** (*Warning*).
-  - Membunyikan nada sirine peringatan pada **Passive Buzzer**.
-  - Menambahkan data ke counter database lokal (`objek_masuk_ultrasonik` + 1).
+### 5. 💾 Database Lokal & Ekspor CSV untuk Microsoft Excel
+Manajemen basis data lokal terstruktur (`data/forest_database.json`) yang dikelola secara *thread-safe*:
+- **Pencatatan Kronologis Lengkap**: ID kejadian, stempel waktu (`YYYY-MM-DD HH:MM:SS`), tanggal, jam, tipe event, wilayah/sektor, deskripsi, confidence AI, dan sudut derajat servo.
+- **Pencarian & Filter Interaktif di Web**:
+  - Kotak pencarian langsung (*live search*) untuk memfilter riwayat berdasarkan kata kunci.
+  - Filter tanggal harian (*Today / Specific Date*).
+  - Pemilih kategori event.
+- **Ekspor CSV Anti-0KB & Ramah Excel**:
+  - Tombol **Export CSV** di dashboard mengunduh seluruh data riwayat insiden.
+  - Menggunakan teknik streaming **Blob JavaScript** dan backend **Flask `send_file`** dengan header `Content-Length` eksplisit untuk menjamin unduhan tidak pernah 0 KB.
+  - Dilengkapi karakter **UTF-8 BOM (`\ufeff`)**, sehingga simbol derajat (`°`), teks Indonesia, dan tanda baca terbuka rapi dan presisi di **Microsoft Excel**, Google Sheets, maupun LibreOffice Calc.
 
 ---
 
-### 6. 🎯 Tool Kalibrasi Presisi & Labeling Dataset
-- **`calibrate_zones.py`**: Tool visual interaktif berbasis OpenCV untuk mengatur titik sudut $0^\circ$ dan $90^\circ$ Servo 1 & 2 cukup dengan *klik dan drag mouse*.
-- **`labeling_tool.py`**: Tool GUI desktop untuk membuat kotak pembatas (*bounding box*) manual pada dataset gambar berformat YOLOv8.
-- **`train_yolo.py`**: Skrip otomatisasi pelatihan model kustom YOLOv8.
+### 6. 🔥 Peringatan Bahaya Hardware Kritis (Flame Sensor Fisik — GPIO 35)
+Sensor api khusus yang dipasang **langsung pada boks mikrokontroler ESP32**:
+- **Pemicu Darurat**: Jika api fisik menyentuh atau berada sangat dekat dengan sirkuit ESP32 (Active LOW pada GPIO 35).
+- **Banner Merah Berkedip di Web**: Menampilkan peringatan mencolok di bagian atas dashboard dengan animasi darurat dan alarm audio Web Audio API.
+- **Email Darurat Protokol Hardware**: Mengirim instruksi pemutusan daya utama, pemadaman dengan APAR, dan evakuasi boks kontroler ke petugas teknis.
+- **Pencatatan Otomatis**: Masuk ke database lokal (`HARDWARE_DANGER`) dan tersinkron ke Firebase Cloud.
+
+---
+
+### 7. 📧 Sistem Notifikasi Email Terpadu (SMTP)
+Modul pengiriman email otomatis (`email_notifier.py`) berbasis *background thread*:
+1. **Laporan Pohon Tumbang Alami** $\to$ Petugas Konservasi & Lingkungan Hidup.
+2. **Laporan Pohon Ditebang / Pembalakan Liar** $\to$ Polisi Kehutanan & Regu Patroli.
+3. **Eskalasi Kebakaran Hutan (> 15 Detik)** $\to$ Unit Pemadam Kebakaran (Damkar).
+4. **Peringatan Bahaya Hardware Kritis** $\to$ Tim Teknis / Operator Lapangan.
+- Setiap email menyertakan **foto snapshot** bukti visual kejadian dan catatan log resmi di `data/email_alerts.log`.
+
+---
+
+### 8. ☁️ Sinkronisasi Cloud Global (Firebase Realtime Database)
+- Mengunggah telemetry jarak ultrasonik, status pompa relay, sudut servo, statistik akumulasi insiden, dan log kejadian ke Firebase Cloud.
+- Memungkinkan pimpinan atau pihak luar memantau kondisi hutan secara daring melalui REST API Firebase dari mana saja di seluruh dunia.
 
 ---
 
@@ -89,295 +113,222 @@ Modul notifikasi otomatis via protokol **SMTP (Gmail App Password / Custom SMTP)
 
 ```mermaid
 graph TD
-    CAM[📷 ESP32-CAM Node] -->|MJPEG Stream / TCP Port 80| PY_SERVER[💻 Python Central AI Hub]
+    CAM[📷 ESP32-CAM Node] -->|MJPEG Stream / HTTP Port 80| PY_SERVER[💻 Python Central AI Hub]
     
     subgraph Python Central Server & AI Engine
-        PY_SERVER --> AI[🧠 AI Detector: YOLOv8 / Fallback Vision]
+        PY_SERVER --> AI[🧠 AI Detector: YOLOv8 & Vector Angle Projection]
         AI -->|Deteksi Pohon & Api| LOGIC[⚙️ Forest Protection Logic Engine]
         
-        LOGIC -->|1. Simpan Counter & Log Kejadian| DB[(💾 Local JSON Database: forest_database.json)]
-        LOGIC -->|2. Kirim Notifikasi & Snapshot Foto| EMAIL[📧 SMTP Email Notifier Engine]
-        LOGIC -->|3. Streaming & Status Realtime| WEB[🌐 Web Dashboard: Port 5000]
+        LOGIC -->|1. Simpan Log & Counter| DB[(💾 Local JSON Database: forest_database.json)]
+        LOGIC -->|2. Unduh Format Excel| CSV[📄 Export CSV UTF-8 BOM]
+        LOGIC -->|3. Kirim Email + Foto| EMAIL[📧 SMTP Email Notifier Engine]
+        LOGIC -->|4. Streaming & WebSocket| WEB[🌐 Web Dashboard: Port 5000]
+        LOGIC -->|5. Sinkronisasi Cloud| FIREBASE[(☁️ Firebase Realtime Database)]
     end
 
-    EMAIL -->|Pohon Jatuh Alami| PETUGAS1[🧑‍🌾 Petugas Konservasi Hutan]
-    EMAIL -->|Pohon Ditebang / Logging| POLHUT[👮 Polisi Kehutanan / Patroli]
-    EMAIL -->|Api Tidak Padam > 15s| DAMKAR[🚒 Armada Pemadam Kebakaran]
+    EMAIL -->|Pohon Jatuh Alami| PETUGAS1[🧑‍🌾 Tim Konservasi Hutan]
+    EMAIL -->|Pohon Ditebang / Logging| POLHUT[👮 Polisi Kehutanan]
+    EMAIL -->|Api Tidak Padam > 15s| DAMKAR[🚒 Armada Damkar]
+    EMAIL -->|Sensor Api GPIO 35 Terpicu| TEKNIS[⚠️ Tim Teknis Hardware]
 
-    WEB <-->|WebSocket Kontrol Manual Servo & Relay| LOGIC
+    WEB <-->|Kontrol Servo, Relay, & Kalibrasi Area| LOGIC
     LOGIC <-->|Bi-directional TCP Socket: Port 8888| ESP_MAIN[⚡ ESP32 Main Actuator Node]
 
     subgraph ESP32 Main Node Actuation
-        ESP_MAIN --> S1[🔄 Servo Tower 1 - GPIO 16]
-        ESP_MAIN --> S2[🔄 Servo Tower 2 - GPIO 17]
+        ESP_MAIN --> S1[🔄 Servo Tower 1 Area 1 - GPIO 16]
+        ESP_MAIN --> S2[🔄 Servo Tower 2 Area 2 - GPIO 17]
         ESP_MAIN --> R1[💧 Relay 1 Pompa 1 - GPIO 25]
         ESP_MAIN --> R2[💧 Relay 2 Pompa 2 - GPIO 26]
-        ESP_MAIN --> US[📏 HC-SR04 Ultrasonic 1-8cm - GPIO 33/32]
+        ESP_MAIN --> US[📏 Ultrasonic HC-SR04 - GPIO 33/32]
         ESP_MAIN --> BUZZ[🔊 Passive Buzzer Alarm - GPIO 18]
-        ESP_MAIN --> RGB[💡 RGB LED Indicator - GPIO 19/21/22]
-        ESP_MAIN --> FLAME[🔥 Sensor Api DO - GPIO 35]
+        ESP_MAIN --> RGB[💡 RGB LED Status - GPIO 19/21/22]
+        ESP_MAIN --> FLAME[🔥 Sensor Api Darurat DO - GPIO 35]
     end
 ```
 
 ---
 
-## 🔄 Alur Kerja Sistem (System Workflow)
+## 🔌 Pin Mapping Hardware ESP32
 
-```mermaid
-sequenceDiagram
-    autonumber
-    actor Hutan as Area Hutan (Objek)
-    participant CAM as ESP32-CAM
-    participant AI as Central AI Engine (Python)
-    participant DB as Local Database (JSON)
-    participant Mail as Email Notifier
-    participant ESP as ESP32 Main Node
-    participant Web as Web Dashboard
+Konfigurasi pin ini dirancang bebas dari gangguan *strapping pins* (GPIO 0, 2, 4, 12, 15) dan pin JTAG (GPIO 13, 14), menjamin servo tidak bergetar (*glitch-free*) saat proses booting:
 
-    Hutan->>CAM: Gambar/Video Pohon atau Api
-    CAM->>AI: Kirim Stream Video Real-time
-    AI->>AI: Inference AI (YOLOv8)
-
-    alt Deteksi Pohon Jatuh Alami
-        AI->>DB: Catat Event 'POHON_JATUH_ALAMI' (Counter + 1)
-        AI->>Mail: Kirim Email + Foto ke Petugas Konservasi
-        AI->>Web: Update Notifikasi & Metrik Dashboard
-    else Deteksi Pohon Ditebang (Illegal Logging)
-        AI->>DB: Catat Event 'POHON_DITEBANG' (Counter + 1)
-        AI->>Mail: Kirim Email Darurat + Foto ke Polisi Kehutanan
-        AI->>Web: Peringatan Bahaya di Web Dashboard
-    else Deteksi Titik Api (Kebakaran)
-        AI->>DB: Catat Event 'API_TERDETEKSI' (Counter + 1)
-        AI->>ESP: Perintah Arahkan Servo (GPIO 16/17) & Hidupkan Pompa (GPIO 25/26)
-        ESP-->>Hutan: Semprotkan Air ke Titik Api & Nyalakan Sirine Buzzer
-        opt Api Tidak Padam > 15 Detik
-            AI->>Mail: Kirim Email Darurat Eskalasi ke DAMKAR + Foto
-        end
-        AI->>Web: Update Status Pemadaman & Visual Reticle
-    end
-
-    opt Kendali Manual dari Web Dashboard
-        Web->>AI: Kirim Perintah (Geser Servo / Toggle Pompa)
-        AI->>ESP: Teruskan Instruksi via TCP Socket Port 8888
-        ESP-->>Hutan: Aktuator Merespons Instan
-    end
-```
-
----
-
-## 🔌 Pin Mapping & Alasan Keamanan Pin ESP32
-
-Pemilihan konfigurasi pin di bawah ini telah disesuaikan agar **100% aman dan stabil**, bebas dari gangguan *strapping pins* (GPIO 0, 2, 4, 12, 15), menghindari memori SPI Flash internal (GPIO 6–11), serta menghindari pin antarmuka JTAG (GPIO 13 dan 14) yang sebelumnya dapat menimbulkan *jitter* / getaran liar pada servo saat proses booting.
-
-| No | Komponen Hardware | Pin ESP32 | Tipe GPIO | Fungsi & Alasan Keamanan Pin |
+| No | Komponen Hardware | Pin ESP32 | Tipe Pin | Fungsi & Catatan Desain |
 | :---: | :--- | :---: | :---: | :--- |
-| **1** | **Servo Tower 1 (Area 1)** | **GPIO 16** | Output (PWM) | Mengarahkan semprotan air ke titik api di Area 1 (Kiri). Pin PWM stabil bebas konflik JTAG. |
-| **2** | **Servo Tower 2 (Area 2)** | **GPIO 17** | Output (PWM) | Mengarahkan semprotan air ke titik api di Area 2 (Kanan). Pin PWM stabil bebas konflik JTAG. |
-| **3** | **Relay 1 (Pompa Air Area 1)** | **GPIO 25** | Digital Output | Menyalakan pompa pemadam Area 1 (*Active LOW*). Bebas glitch boot. |
-| **4** | **Relay 2 (Pompa Air Area 2)** | **GPIO 26** | Digital Output | Menyalakan pompa pemadam Area 2 (*Active LOW*). Bebas glitch boot. |
-| **5** | **Ultrasonic HC-SR04 TRIG** | **GPIO 33** | Digital Output | Mengirimkan pulsa trigger ultrasonik 10 µs. |
-| **6** | **Ultrasonic HC-SR04 ECHO** | **GPIO 32** | Digital Input | Menerima pantulan gelombang ultrasonik untuk penghitungan jarak. |
-| **7** | **Sensor Api Backup (DO Pin)** | **GPIO 35** | Input-Only (GPI) | Pin input murni tanpa pullup internal, sangat presisi membaca sinyal digital sensor flame. |
-| **8** | **Passive Buzzer** | **GPIO 18** | Output (PWM Tone) | Membunyikan sirine peringatan kebakaran & alarm intrusi jarak dekat. |
-| **9** | **LED RGB - Merah (R)** | **GPIO 19** | Digital Output | Indikator Darurat Api / Bahaya. |
-| **10** | **LED RGB - Hijau (G)** | **GPIO 21** | Digital Output | Indikator Sistem Siaga / Aman. |
-| **11** | **LED RGB - Biru (B)** | **GPIO 22** | Digital Output | Indikator Jaringan Terhubung / Mode Kalibrasi. |
+| **1** | **Servo Tower 1 (Area 1)** | **GPIO 16** | Output (PWM) | Arah semprotan air Area 1 (Kiri). PWM stabil bebas konflik JTAG. |
+| **2** | **Servo Tower 2 (Area 2)** | **GPIO 17** | Output (PWM) | Arah semprotan air Area 2 (Kanan). PWM stabil bebas konflik JTAG. |
+| **3** | **Relay 1 (Pompa Air Area 1)** | **GPIO 25** | Digital Output | Kontrol pompa air Area 1 (*Active LOW*). Bebas glitch saat booting. |
+| **4** | **Relay 2 (Pompa Air Area 2)** | **GPIO 26** | Digital Output | Kontrol pompa air Area 2 (*Active LOW*). Bebas glitch saat booting. |
+| **5** | **Ultrasonic HC-SR04 TRIG** | **GPIO 33** | Digital Output | Sinyal picu ultrasonik 10 µs. |
+| **6** | **Ultrasonic HC-SR04 ECHO** | **GPIO 32** | Digital Input | Pembacaan durasi pulsa gelombang pantulan. |
+| **7** | **Sensor Api Fisik ESP32 (DO)** | **GPIO 35** | Input-Only (GPI) | Proteksi fisik boks kontroler. Sangat akurat tanpa pullup internal. |
+| **8** | **Passive Buzzer** | **GPIO 18** | Output (PWM) | Sirine darurat api & peringatan intrusi perimeter. |
+| **9** | **LED RGB - Merah (R)** | **GPIO 19** | Digital Output | Indikator Api / Bahaya Kritis. |
+| **10** | **LED RGB - Hijau (G)** | **GPIO 21** | Digital Output | Indikator Status Aman / Siaga. |
+| **11** | **LED RGB - Biru (B)** | **GPIO 22** | Digital Output | Indikator Terhubung / Mode Kalibrasi. |
 
 > [!IMPORTANT]
-> **Manajemen Catu Daya (Power Supply)**:
-> 2 unit Servo Motor (Tower 1 & 2) dan 2 unit Modul Relay Pompa memerlukan arus listrik yang besar dan stabil saat aktif. Gunakan **Adaptor Eksternal 5V (minimal 2 Ampere)** untuk mensuplai pin VCC Servo dan Relay. **Pastikan pin GND dari catu daya eksternal dihubungkan bersama ke pin GND ESP32 (*Common Ground*)**.
-
----
-
-## 📊 Struktur & Skema Database Lokal (`data/forest_database.json`)
-
-Database disimpan secara lokal dalam format JSON yang bersih dan mudah dibaca oleh program maupun manusia:
-
-```json
-{
-  "counters": {
-    "pohon_jatuh_alami": 4,
-    "pohon_ditebang": 2,
-    "insiden_api": 5,
-    "objek_masuk_ultrasonik": 8
-  },
-  "events": [
-    {
-      "id": 11,
-      "timestamp": "2026-10-13 09:15:30",
-      "type": "POHON_DITEBANG",
-      "zone": "Area 2",
-      "description": "Terdeteksi aktivitas pohon ditebang / illegal logging di Area 2 (Confidence: 89%)",
-      "details": {
-        "class_id": 0,
-        "label": "Pohon Ditebang",
-        "confidence": 0.89,
-        "bbox": [120, 80, 240, 290],
-        "email_notified": true,
-        "recipient": "polisi_kehutanan@patroli.go.id"
-      }
-    },
-    {
-      "id": 10,
-      "timestamp": "2026-10-13 08:42:15",
-      "type": "POHON_JATUH_ALAMI",
-      "zone": "Area 1",
-      "description": "Terdeteksi pohon tumbang alami di Area 1 (Confidence: 94%)",
-      "details": {
-        "class_id": 1,
-        "label": "Pohon Jatuh Alami",
-        "confidence": 0.94,
-        "bbox": [50, 110, 195, 230],
-        "email_notified": true,
-        "recipient": "konservasi_hutan@lingkungan.go.id"
-      }
-    },
-    {
-      "id": 9,
-      "timestamp": "2026-10-13 07:20:02",
-      "type": "API_TERDETEKSI",
-      "zone": "Area 1",
-      "description": "Titik api terdeteksi di Area 1 (Sudut Servo: 72°, Conf: 91%)",
-      "details": {
-        "class_id": 2,
-        "label": "Api",
-        "confidence": 0.91,
-        "angle": 72,
-        "action": "AUTO_EXTINGUISH_SPRAY",
-        "damkar_dispatch": true
-      }
-    }
-  ],
-  "system_status": {
-    "esp32_cam_connected": true,
-    "esp32_main_connected": true,
-    "fire_extinguish_mode": "AUTO",
-    "last_sync": "2026-10-13 09:15:30"
-  }
-}
-```
-
-### Keunggulan Fitur Database Lokal:
-1. **Dapat Diambil Sewaktu-waktu**: Endpoint `http://localhost:5000/api/database` mengembalikan seluruh data dalam format JSON standar untuk diekspor ke Excel, CSV, atau aplikasi pihak ketiga.
-2. **Kalkulasi & Agregasi Cepat**: Fungsi `increment_counter()` memperbarui angka statistik insiden secara instan tanpa mengulang pembacaan berkas dari awal.
-3. **Pencatatan Berdasarkan Waktu**: Setiap entri memiliki stempel waktu tanggal dan jam lokal yang akurat untuk kronologi audit lingkungan dan penyelidikan hukum.
-
----
-
-## 📧 Format Notifikasi Email Otomatis
-
-Konfigurasi email tersimpan di `data/email_config.json`:
-```json
-{
-  "enabled": true,
-  "smtp_server": "smtp.gmail.com",
-  "smtp_port": 587,
-  "use_tls": true,
-  "sender_email": "sistem.aiot.kehutanan@gmail.com",
-  "sender_password": "xxxx xxxx xxxx xxxx",
-  "recipient_emails": [
-    "petugas.damkar@daerah.go.id",
-    "polhut.patroli@kehutanan.go.id",
-    "konservasi.hutan@taman-nasional.id"
-  ],
-  "fire_timeout_seconds": 15
-}
-```
-
-### Jenis Notifikasi Email:
-1. **Pohon Jatuh Alami**:
-   - Subjek: `[INFO KONSERVASI] Terdeteksi Pohon Jatuh Alami di Sektor {Area}`
-   - Isi: Tanggal/waktu, estimasi ukuran, koordinat sektor pantauan, dan foto lampiran pohon tumbang.
-2. **Pohon Ditebang (Pembalakan Liar)**:
-   - Subjek: `[WASPADA PATROLI] Peringatan Pembalakan Liar / Pohon Ditebang di Sektor {Area}`
-   - Isi: Tanggal/waktu, titik lokasi sektor, tingkat keyakinan AI, instruksi penyisiran unit patroli, dan foto lampiran bukti penebangan.
-3. **Eskalasi Kebakaran Hutan (Damkar)**:
-   - Subjek: `[DARURAT DAMKAR] Kebakaran Hutan di {Area} Belum Padam ({Durasi}s)`
-   - Isi: Laporan resmi status eskalasi darurat, sudut arah semprotan nozzle, durasi nyala api, instruksi pengerahan armada tangki pemadam, dan foto lampiran kobaran api.
+> **Catu Daya Eksternal**:
+> Motor Servo dan Relay Pompa membutuhkan suplai arus yang stabil. Gunakan **Adaptor Eksternal 5V (minimal 2A)** untuk memberi daya pada Servo dan Relay. **Wajib menghubungkan pin GND adaptor ke pin GND ESP32 (*Common Ground*)**.
 
 ---
 
 ## 🚀 Panduan Menjalankan Sistem
 
 ### 1. Instalasi Dependensi Python
-Buka terminal pada direktori proyek dan jalankan:
+Pastikan Python 3.8+ telah terpasang di komputer Anda:
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. Pengaturan Konfigurasi Jaringan & Email
-- **Konfigurasi Email**: Sesuaikan alamat email pengirim, kata sandi aplikasi (*App Password*), dan daftar email penerima pada berkas `data/email_config.json`.
-- **Pengaturan Alamat IP**: Sistem akan otomatis menyimpan IP ESP32 Main dan ESP32-CAM yang Anda masukkan melalui Web Dashboard atau skrip `network_config.py`.
-
-### 3. Kalibrasi Sudut & Titik Area
-Gunakan tool visual untuk menyesuaikan arah sudut tembak nozzle pemadam:
+### 2. Kalibrasi Sudut 0° & 90° Servo dan Batas Area
+Sebelum mengoperasikan sistem pemadam otomatis, lakukan kalibrasi arah sudut tembak nozzle:
 ```bash
 python calibrate_zones.py
 ```
-- Klik dan geser titik **S1: 0°**, **S1: 90°**, **S2: 0°**, dan **S2: 90°** langsung pada tampilan kamera.
-- Tekan tombol **S** untuk menyimpan konfigurasi kalibrasi.
+- Jendela visual kamera akan terbuka.
+- **Klik dan geser (drag)** titik:
+  - `S1: 0°` dan `S1: 90°` untuk menetapkan rentang vektor Servo Tower 1 (Area 1).
+  - `S2: 0°` dan `S2: 90°` untuk menetapkan rentang vektor Servo Tower 2 (Area 2).
+  - Titik poligon `P1`, `P2`, `P3`, `P4` untuk membatasi wilayah pantauan Area 1 dan Area 2.
+- Tekan tombol **`S`** pada keyboard untuk menyimpan konfigurasi ke `data/zones_config.json`.
+- Tekan **`R`** untuk mereset ke posisi awal, atau **`Q`** untuk keluar.
 
-### 4. Menjalankan Server & Web Dashboard
-Jalankan server utama:
+### 3. Uji Model AI dengan Kamera Mandiri (`test_model.py`)
+Untuk memverifikasi model YOLOv8 mendeteksi pohon jatuh, pohon ditebang, dan api secara visual:
+```bash
+python test_model.py
+```
+Skrip ini akan membuka feed kamera lokal/USB, menampilkan bounding box deteksi AI, label kelas, tingkat confidence, dan proyeksi derajat servo secara langsung di layar.
+
+### 4. Menjalankan Server Utama & Web Dashboard
+Jalankan server hub terpadu:
 ```bash
 python python_backend/server.py
 ```
-Buka browser dan buka alamat:
+Buka browser dan akses alamat:
 👉 **`http://localhost:5000`**
 
-Di Web Dashboard Anda dapat:
-- Memantau streaming kamera AI secara *live*.
-- Menggerakkan slider sudut Servo Tower 1 & 2.
-- Menekan tombol untuk menyalakan/mematikan Pompa Air secara manual.
-- Menguji bunyi buzzer dan mengganti warna indikator lampu RGB LED.
-- Membuka data JSON database lokal melalui tombol *View Raw JSON DB*.
+Di halaman Web Dashboard, Anda dapat:
+- Melihat feed kamera live dengan overlay poligon area, garis referensi $0^\circ - 90^\circ$, dan reticle sudut api.
+- Memantau grafik sensor ultrasonik real-time.
+- Mengontrol posisi sudut servo secara manual via slider.
+- Menyalakan/mematikan pompa air via tombol spray.
+- Melakukan pencarian data kejadian, filter tanggal, dan mengunduh **Export CSV** untuk laporan Microsoft Excel.
+- Membuka link WiFi dashboard pada HP atau perangkat lain.
 
-### 5. Menjalankan Engine Utama (Deteksi AI + Kontrol Hardware Mandiri)
-Jika ingin menjalankan antarmuka desktop mandiri lengkap dengan stabilizer anti-kedip dan mode pemadaman bergantian:
-```bash
-python main.py
+### 5. Pengaturan Email Notifikasi & Firebase Cloud
+- **Email (`data/email_config.json`)**:
+  Masukkan alamat email pengirim Gmail dan App Password 16 karakter:
+  ```json
+  {
+    "enabled": true,
+    "smtp_server": "smtp.gmail.com",
+    "smtp_port": 587,
+    "use_tls": true,
+    "sender_email": "email.anda@gmail.com",
+    "sender_password": "xxxx xxxx xxxx xxxx",
+    "recipient_emails": ["damkar@daerah.go.id", "polhut@kehutanan.go.id", "konservasi@taman.id"]
+  }
+  ```
+- **Firebase Cloud (`data/firebase_config.json`)**:
+  Masukkan URL Realtime Database Firebase Anda:
+  ```json
+  {
+    "enabled": true,
+    "database_url": "https://PROYEK-ANDA-default-rtdb.firebaseio.com",
+    "sync_interval_seconds": 3
+  }
+  ```
+  *(Lihat panduan lengkap di [`TUTORIAL_FIREBASE.md`](TUTORIAL_FIREBASE.md))*.
+
+### 6. Upload Firmware Arduino ke Mikrokontroler
+1. **ESP32-CAM**:
+   - Buka `esp32_cam_firmware/esp32_cam_stream.ino` di Arduino IDE.
+   - Atur nama SSID dan Password WiFi Anda.
+   - Pilih board: **AI Thinker ESP32-CAM** $\to$ Upload.
+2. **ESP32 Main Actuator Node**:
+   - Buka `esp32_main_firmware/esp32_main_protection/esp32_main_protection.ino` di Arduino IDE.
+   - Atur nama SSID dan Password WiFi Anda.
+   - Pilih board: **ESP32 Dev Module** $\to$ Upload.
+
+---
+
+## 📊 Struktur Database Lokal & Ekspor CSV
+
+### Skema Berkas JSON (`data/forest_database.json`)
+```json
+{
+  "counters": {
+    "pohon_jatuh_alami": 12,
+    "pohon_ditebang": 5,
+    "insiden_api": 8,
+    "objek_masuk_ultrasonik": 24
+  },
+  "events": [
+    {
+      "id": 182,
+      "timestamp": "2026-10-13 14:30:15",
+      "type": "API_TERDETEKSI",
+      "zone": "Area 1",
+      "description": "Titik api terdeteksi di Area 1 (Sudut Servo: 64°, Conf: 92%)",
+      "details": {
+        "confidence": 0.92,
+        "angle": 64,
+        "action": "AUTO_EXTINGUISH_SPRAY"
+      }
+    }
+  ]
+}
 ```
 
-### 6. Upload Firmware ESP32
-1. **ESP32-CAM**:
-   - Buka file `esp32_cam_firmware/esp32_cam_stream.ino` di Arduino IDE.
-   - Masukkan nama SSID dan Password WiFi Anda.
-   - Upload menggunakan board **AI Thinker ESP32-CAM**.
-2. **ESP32 Main Actuator Node**:
-   - Buka file `esp32_main_firmware/esp32_main_protection/esp32_main_protection.ino` di Arduino IDE.
-   - Masukkan SSID dan Password WiFi.
-   - Upload menggunakan board **ESP32 Dev Module**.
+### Format Berkas CSV (`forest_database_events_YYYYMMDD_HHMMSS.csv`)
+Tersedia langsung melalui tombol **Export CSV** di dashboard:
+| ID | Timestamp | Tanggal | Jam | Tipe Event | Wilayah / Sektor | Deskripsi Insiden | Confidence AI | Sudut Servo | Status |
+| :---: | :---: | :---: | :---: | :---: | :---: | :--- | :---: | :---: | :---: |
+| 182 | 2026-10-13 14:30:15 | 2026-10-13 | 14:30:15 | API_TERDETEKSI | Area 1 | Titik api terdeteksi di Area 1 (Sudut Servo: 64°, Conf: 92%) | 92% | 64° | TERCATAT |
+| 181 | 2026-10-13 14:15:02 | 2026-10-13 | 14:15:02 | POHON_DITEBANG | Area 2 | Terdeteksi aktivitas pohon ditebang / illegal logging di Area 2 | 88% | - | TERCATAT |
+
+> [!TIP]
+> Berkas CSV diekspor dengan format **UTF-8 with BOM**, sehingga ketika berkas dibuka langsung di **Microsoft Excel** dengan klik ganda, teks Bahasa Indonesia, pemisahan kolom, dan simbol derajat (`°`) akan otomatis tersusun rapi tanpa perlu proses import text wizard manual.
 
 ---
 
 ## 📁 Struktur Direktori Proyek
 
 ```text
-├── calibrate_zones.py          # Tool kalibrasi interaktif 0°-90° Servo & Area
-├── main.py                     # Program AI utama dengan stabilizer anti-kedip & mutual exclusion
-├── email_notifier.py           # Modul pengiriman email otomatis (Pohon Jatuh, Ditebang, Damkar)
-├── network_config.py           # Sinkronisasi IP ESP32 dan ESP32-CAM antar program
-├── requirements.txt            # Daftar pustaka Python yang dibutuhkan
+├── calibrate_zones.py          # Launcher kalibrasi interaktif 0°-90° Servo & Area
+├── test_model.py               # Launcher pengujian model YOLOv8 langsung via kamera
+├── main.py                     # Program AI utama dengan stabilizer anti-kedip
+├── email_notifier.py           # Proxy modul email otomatis
+├── firebase_manager.py         # Proxy modul sinkronisasi Firebase Cloud
+├── network_config.py           # Konfigurasi sinkronisasi IP mikrokontroler
+├── requirements.txt            # Daftar dependensi Python
+├── TUTORIAL_FIREBASE.md        # Panduan cepat setup Firebase Realtime Database
 │
 ├── data/
-│   ├── forest_database.json    # Database lokal JSON (Counters, Event Logs, Status)
+│   ├── forest_database.json    # Basis data lokal (Counters, Riwayat Kejadian, Status)
+│   ├── zones_config.json       # Koordinat titik sudut kalibrasi servo (0°-90°) & poligon area
 │   ├── email_config.json       # Konfigurasi SMTP & akun penerima email
-│   ├── email_alerts.log        # Berkas catatan log resmi seluruh email yang dikirim
-│   ├── zones_config.json       # Koordinat titik sudut kalibrasi servo dan area pantau
-│   └── fire_alerts/            # Arsip foto snapshot bukti kejadian kamera
+│   ├── firebase_config.json    # Konfigurasi Firebase Cloud (URL & auth token)
+│   ├── email_alerts.log        # Catatan resmi seluruh pengiriman email darurat
+│   ├── fire_alerts/            # Arsip foto snapshot insiden api & bahaya hardware
+│   └── tree_alerts/            # Arsip foto snapshot insiden pohon jatuh & ditebang
 │
-├── dataset/                    # Dataset training gambar & label format YOLOv8
-├── runs/                       # Bobot model hasil training YOLOv8 (best.pt)
+├── runs/                       # Bobot model terlatih YOLOv8 (best.pt)
 │
 ├── python_backend/
-│   ├── server.py               # Flask & Socket.IO Central Hub Server (Web Dashboard)
-│   ├── database_manager.py     # Modul pengelola database lokal JSON (Thread-Safe)
-│   ├── ai_detector.py          # Engine deteksi YOLOv8 & Vision Fallback
-│   ├── labeling_tool.py        # GUI tool pelabelan bounding box kustom
-│   ├── train_yolo.py           # Skrip otomatisasi training YOLOv8
-│   ├── static/                 # File CSS, JavaScript, dan aset Web Dashboard
+│   ├── server.py               # Central Server Hub (Flask + Socket.IO + Video Stream)
+│   ├── database_manager.py     # Engine database lokal JSON & ekspor CSV Excel (Thread-Safe)
+│   ├── ai_detector.py          # Engine deteksi YOLOv8, proyeksi sudut 0°-90°, & auto-reload
+│   ├── calibrate_zones.py      # Core script kalibrasi titik servo & area
+│   ├── test_model.py           # Core script live video camera model testing
+│   ├── firebase_manager.py     # Modul background async Firebase REST client
+│   ├── email_notifier.py       # Engine notifikasi email 4 kategori + snapshot
+│   ├── static/
+│   │   ├── css/style.css       # Stylesheet Cyber-Eco UI Web Dashboard
+│   │   └── js/dashboard.js     # WebSocket client, Blob CSV downloader, & danger banner
 │   └── templates/
-│       └── index.html          # Tampilan Web Cyber-Eco Monitoring & Actuator Control
+│       └── index.html          # Web Dashboard: Live Stream, Kontrol Komponen, & Log Data
 │
 ├── esp32_cam_firmware/         # Source code Arduino firmware ESP32-CAM
 └── esp32_main_firmware/        # Source code Arduino firmware ESP32 Main Actuator
@@ -386,4 +337,4 @@ python main.py
 ---
 
 ## 👥 Kontributor & Lisensi
-Proyek **AIoT Intelligence Forest Protection System** dikembangkan untuk pemantauan cerdas dan konservasi kelestarian hutan masa depan. Lisensi di bawah pengawasan tim pengembang.
+Proyek **AIoT Intelligence Forest Protection System** dikembangkan untuk pemantauan cerdas, mitigasi kebakaran hutan cepat tanggap, dan konservasi alam masa depan. Seluruh hak cipta dan lisensi berada di bawah pengawasan tim pengembang.

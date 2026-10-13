@@ -1,0 +1,90 @@
+{
+  "version": "1.0",
+  "description": "Konfigurasi 4 Titik Poligon & Kalibrasi Sudut Servo (0\u00b0 - 90\u00b0)",
+  "area1": {
+    "name": "Area 1",
+    "servo": 1,
+    "servo_gpio": 16,
+    "relay": 1,
+    "relay_gpio": 25,
+    "servo_points": {
+      "p0": {
+        "name": "S1: 0\u00b0",
+        "x": 0.184,
+        "y": 0.662,
+        "angle": 0
+      },
+      "p90": {
+        "name": "S1: 90\u00b0",
+        "x": 0.297,
+        "y": 0.383,
+        "angle": 90
+      }
+    },
+    "points": [
+      {
+        "name": "P1 (Kiri Atas)",
+        "x": 0.319,
+        "y": 0.267
+      },
+      {
+        "name": "P2 (Kanan Atas)",
+        "x": 0.512,
+        "y": 0.417
+      },
+      {
+        "name": "P3 (Kanan Bawah)",
+        "x": 0.153,
+        "y": 0.812
+      },
+      {
+        "name": "P4 (Kiri Bawah)",
+        "x": 0.0,
+        "y": 0.546
+      }
+    ]
+  },
+  "area2": {
+    "name": "Area 2",
+    "servo": 2,
+    "servo_gpio": 17,
+    "relay": 2,
+    "relay_gpio": 26,
+    "servo_points": {
+      "p0": {
+        "name": "S2: 0\u00b0",
+        "x": 0.562,
+        "y": 0.588,
+        "angle": 0
+      },
+      "p90": {
+        "name": "S2: 90\u00b0",
+        "x": 0.506,
+        "y": 0.879,
+        "angle": 90
+      }
+    },
+    "points": [
+      {
+        "name": "P1 (Kiri Atas)",
+        "x": 0.575,
+        "y": 0.479
+      },
+      {
+        "name": "P2 (Kanan Atas)",
+        "x": 0.812,
+        "y": 0.683
+      },
+      {
+        "name": "P3 (Kanan Bawah)",
+        "x": 0.522,
+        "y": 1.0
+      },
+      {
+        "name": "P4 (Kiri Bawah)",
+        "x": 0.212,
+        "y": 0.867
+      }
+    ]
+  }
+}
