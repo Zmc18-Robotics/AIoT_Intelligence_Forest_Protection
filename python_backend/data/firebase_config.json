@@ -1,6 +1,6 @@
 {
   "enabled": true,
-  "database_url": "https://aiot-forest-protection-default-rtdb.firebaseio.com",
+  "database_url": "-",
   "auth_token": "",
   "sync_interval_seconds": 3
 }
