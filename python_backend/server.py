@@ -130,7 +130,7 @@ if len(sys.argv) > 2 and "." in sys.argv[2]:
     ESP32_CAM_IP = sys.argv[2].strip()
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
-app.config["SECRET_KEY"] = "aiot-forest-protection-2026"
+app.config["SECRET_KEY"] = "-"
 CORS(app)
 socketio = SocketIO(app, cors_allowed_origins="*", async_mode="threading")
 
