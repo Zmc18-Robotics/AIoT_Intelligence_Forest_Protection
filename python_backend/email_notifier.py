@@ -39,10 +39,10 @@ DEFAULT_EMAIL_CONFIG = {
     "smtp_server": "smtp.gmail.com",
     "smtp_port": 587,
     "use_tls": True,
-    "sender_email": "mzidaneakbari3@gmail.com",
-    "sender_password": "feng ovbf vcjd epqg",  # Masukkan App Password Gmail jika ingin kirim email sungguhan
+    "sender_email": "email 1",
+    "sender_password": "",  # Masukkan App Password Gmail jika ingin kirim email sungguhan
     "recipient_emails": [
-        "mzidaneakbari2@gmail.com"
+        "email 2"
     ],
     "fire_timeout_seconds": 15
 }
