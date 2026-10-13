@@ -90,20 +90,33 @@ void setRelay(int relayNum, bool state) {
 }
 
 float measureUltrasonicDistance() {
+  // ── Unstick protection jika HC-SR04 ECHO macet di status HIGH ──
+  if (digitalRead(PIN_US_ECHO) == HIGH) {
+    pinMode(PIN_US_ECHO, OUTPUT);
+    digitalWrite(PIN_US_ECHO, LOW);
+    delayMicroseconds(10);
+    pinMode(PIN_US_ECHO, INPUT);
+  }
+
+  // ── Trigger Pulse Bersih (Standard HC-SR04: 4us LOW, 10us HIGH) ──
   digitalWrite(PIN_US_TRIG, LOW);
-  delayMicroseconds(2);
+  delayMicroseconds(4);
   digitalWrite(PIN_US_TRIG, HIGH);
   delayMicroseconds(10);
   digitalWrite(PIN_US_TRIG, LOW);
-  long duration = pulseIn(PIN_US_ECHO, HIGH, 12000); // 12ms max (~2 meter max) - tidak blocking lama
-  if (duration <= 0) return 100.0;
-  return (duration * 0.0343) / 2.0;
+
+  // 25ms timeout (~4.2 meter), memberi cukup waktu pantulan suara tanpa blocking
+  long duration = pulseIn(PIN_US_ECHO, HIGH, 25000);
+  if (duration <= 0 || duration > 25000) return 100.0;
+  
+  float dist = (duration * 0.0343) / 2.0;
+  // Batas fisik wajar HC-SR04 (2 cm s/d 400 cm)
+  if (dist < 1.0 || dist > 400.0) return 100.0;
+  return dist;
 }
 
 void playBuzzerTone(int frequency, int durationMs) {
   tone(PIN_BUZZER, frequency, durationMs);
-  delay(durationMs);
-  noTone(PIN_BUZZER);
 }
 
 // ── Boot chime singkat (konfirmasi siap tanpa delay panjang) ────────────────
@@ -354,10 +367,17 @@ void executeCommand(StaticJsonDocument<512> &doc) {
       setRGBColor(false, true, false); // Hijau (Aman)
     }
 
-  // 2. Obstacle alert — ultrasonic 1-8 cm
+  // 2. Obstacle alert — ultrasonic 1-8 cm (Non-blocking alert)
   } else if (strcmp(action, "OBSTACLE_ALERT") == 0) {
     setRGBColor(true, true, false); // YELLOW
-    playBuzzerTone(1200, 150);
+    tone(PIN_BUZZER, 1200, 100);    // Beep 100ms tanpa blocking loop
+
+  // 2b. Obstacle clear — objek menjauh / area aman (> 12 cm)
+  } else if (strcmp(action, "OBSTACLE_CLEAR") == 0) {
+    if (!buzzerAlarmActive) {
+      setRGBColor(false, true, false); // Kembalikan ke HIJAU (Aman)
+      noTone(PIN_BUZZER);
+    }
 
   // 3. Standby — Api telah padam / area bersih
   } else if (strcmp(action, "STANDBY") == 0) {
