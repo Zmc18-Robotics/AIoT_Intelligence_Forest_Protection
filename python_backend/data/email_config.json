@@ -7,6 +7,6 @@
   "sender_password": "-",
   "recipient_emails": [
     "-"
-  ],
+  ], 
   "fire_timeout_seconds": 15
 }
