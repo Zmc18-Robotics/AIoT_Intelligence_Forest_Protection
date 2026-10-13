@@ -33,13 +33,12 @@
 #include "soc/rtc_cntl_reg.h"  // RTC register for brownout
 
 // ================= NETWORK CONFIGURATION =================
-const char* ssid             = "Absolute Solver";
-const char* password         = "CynIsMyRobo18z";
-const char* python_server_ip = "192.168.1.100";
-const uint16_t python_server_port = 8888;
+const char* ssid             = "WIFI";
+const char* password         = "PASS";
 
-WiFiClient  tcpClient;
-WebServer   localWebServer(80);
+WiFiServer  tcpServer(8888);       // ESP32 Bertindak sebagai TCP Server (Port 8888) untuk Python
+WiFiClient  tcpClient;             // Client aktif dari Python AI Central Hub
+WebServer   localWebServer(80);    // Embedded Web Dashboard (Port 80)
 
 // ================= PIN DEFINITIONS =================
 // NOTE: GPIO 13 & 14 are JTAG pins (MTCK/MTMS) — they receive spurious pulses
@@ -66,10 +65,10 @@ Servo servoTower2;
 // ================= RUNTIME STATE =================
 float         currentDistance        = 100.0;
 unsigned long lastDistanceMeasureTime = 0;
-const unsigned long distanceMeasureInterval = 60;
+const unsigned long distanceMeasureInterval = 250; // Jeda 250ms agar CPU & pulseIn tidak overload
 
 unsigned long lastTelemetryTime   = 0;
-const unsigned long telemetryInterval = 80;
+const unsigned long telemetryInterval = 250;       // Kirim status tiap 250ms (stabil tanpa flood)
 
 bool          buzzerAlarmActive   = false;
 unsigned long lastBuzzerToggleTime = 0;
@@ -96,7 +95,7 @@ float measureUltrasonicDistance() {
   digitalWrite(PIN_US_TRIG, HIGH);
   delayMicroseconds(10);
   digitalWrite(PIN_US_TRIG, LOW);
-  long duration = pulseIn(PIN_US_ECHO, HIGH, 25000);
+  long duration = pulseIn(PIN_US_ECHO, HIGH, 12000); // 12ms max (~2 meter max) - tidak blocking lama
   if (duration <= 0) return 100.0;
   return (duration * 0.0343) / 2.0;
 }
@@ -107,37 +106,11 @@ void playBuzzerTone(int frequency, int durationMs) {
   noTone(PIN_BUZZER);
 }
 
-// ── Boot chime ──────────────────────────────────────────────────────────────
-// Phase 1 : two soft "lock-confirm" ticks  (like a smart door lock)
-// Phase 2 : smooth ascending arpeggio      (like elevator arrival / DJI arm)
-// Phase 3 : final settling tone            (system ready)
+// ── Boot chime singkat (konfirmasi siap tanpa delay panjang) ────────────────
 void playBootMelody() {
-  // Phase 1 — double soft tick (880 Hz = A5, short & clean)
-  tone(PIN_BUZZER, 880, 60);  delay(100);
-  tone(PIN_BUZZER, 880, 60);  delay(130);
-
-  // Phase 2 — ascending arpeggio: G4 → C5 → E5 → G5 → C6
-  //           (same chord family used in lift chimes & DJI Mavic arming)
-  const int arp[]  = {392, 523, 659, 784, 1047};
-  const int dur[]  = { 90,  90,  90,  90,  180};
-  for (int i = 0; i < 5; i++) {
-    tone(PIN_BUZZER, arp[i], dur[i]);
-    delay(dur[i] + 25);
-    noTone(PIN_BUZZER);
-    delay(10); // tiny breathe between notes
-  }
-
-  // Phase 3 — soft resolve: D6 (1175 Hz), fades to silence
-  tone(PIN_BUZZER, 1175, 250); delay(260);
+  tone(PIN_BUZZER, 1200, 80);
+  delay(100);
   noTone(PIN_BUZZER);
-}
-
-
-// Slow servo home sweep — confirms servo is alive and horn is correctly seated
-void servoBootSweep(Servo &srv) {
-  for (int a = 90; a <= 120; a += 3) { srv.write(a); delay(20); }
-  for (int a = 120; a >= 60; a -= 3) { srv.write(a); delay(20); }
-  for (int a = 60; a <= 90; a += 3)  { srv.write(a); delay(20); }
 }
 
 void connectToWiFi() {
@@ -294,78 +267,172 @@ void setupWebServer() {
 }
 
 // ===========================================================
-// TCP CONNECTION & COMMAND HANDLER
+// TCP SERVER & FAST COMMAND HANDLER (Non-blocking & Zero Delay)
 // ===========================================================
-void ensureTcpConnection() {
-  if (!tcpClient.connected()) {
-    static unsigned long lastAttempt = 0;
-    if (millis() - lastAttempt > 3000) {
-      lastAttempt = millis();
-      Serial.printf("[TCP] Connecting to Python %s:%d...\n", python_server_ip, python_server_port);
-      if (tcpClient.connect(python_server_ip, python_server_port)) {
-        Serial.println("[TCP] Connected to Python AI Central Hub!");
-        setRGBColor(false, true, false); // Green = Online
-      } else {
-        Serial.println("[TCP ERROR] Failed. Retrying in 3s...");
-        setRGBColor(false, false, true); // Blue = Waiting
-      }
+void checkIncomingTcpClients() {
+  if (tcpServer.hasClient()) {
+    WiFiClient newClient = tcpServer.accept();
+    if (!tcpClient || !tcpClient.connected()) {
+      tcpClient = newClient;
+      tcpClient.setNoDelay(true); // Matikan Nagle Algorithm: Kirim & Terima INSTAN tanpa buffering!
+      tcpClient.setTimeout(10);
+      Serial.printf("[TCP] Python AI Central Hub TERHUBUNG dari %s!\n", tcpClient.remoteIP().toString().c_str());
+      setRGBColor(false, true, false); // Hijau = Online & Siap
+    } else {
+      newClient.stop(); // Tolak koneksi ganda
     }
   }
 }
 
-void handleIncomingCommands() {
-  while (tcpClient.available()) {
-    String line = tcpClient.readStringUntil('\n');
-    line.trim();
-    if (line.length() == 0) continue;
+void executeCommand(StaticJsonDocument<512> &doc) {
+  const char* action = doc["action"] | "";
 
-    StaticJsonDocument<512> doc;
-    DeserializationError err = deserializeJson(doc, line);
-    if (err) {
-      Serial.println("[JSON ERROR] " + String(err.c_str()));
-      continue;
+  // 1. Fire Extinguish — from AI vision (Area 1 & Area 2)
+  static int currentServo1 = 90;
+  static int currentServo2 = 90;
+  static bool currentRelay1 = false;
+  static bool currentRelay2 = false;
+
+  if (strcmp(action, "FIRE_EXTINGUISH") == 0) {
+    bool z1 = doc["zone1_active"] | false;
+    bool z2 = doc["zone2_active"] | false;
+
+    // SAFETY INTERLOCK: Jangan pernah aktifkan kedua pompa & servo bersamaan (cegah voltage drop)
+    if (z1 && z2) {
+      z2 = false; // Prioritaskan Zone 1 jika keduanya aktif bersamaan di paket yang sama
     }
 
-    const char* action = doc["action"] | "";
+    // Area 1: Servo 1 (GPIO 16) & Relay 1 (GPIO 25)
+    if (z1) {
+      int target1 = constrain((int)(doc["zone1_angle"] | 90), 0, 180);
+      if (currentServo1 != target1) {
+        servoTower1.write(target1);
+        currentServo1 = target1;
+      }
+      if (!currentRelay1) {
+        delay(120); // Beri jeda 120ms agar lonjakan arus servo selesai sebelum relay pompa ON
+        setRelay(1, true);
+        currentRelay1 = true;
+      }
+    } else {
+      if (currentServo1 != 90) {
+        servoTower1.write(90);
+        currentServo1 = 90;
+      }
+      if (currentRelay1) {
+        setRelay(1, false);
+        currentRelay1 = false;
+      }
+    }
 
-    // 1. Fire Extinguish — from AI vision
-    if (strcmp(action, "FIRE_EXTINGUISH") == 0) {
-      bool z1 = doc["zone1_active"] | false;
-      bool z2 = doc["zone2_active"] | false;
-      if (z1) { servoTower1.write(constrain((int)(doc["zone1_angle"] | 90), 0, 180)); setRelay(1, (int)(doc["relay1"] | 0) == 1); }
-      else      setRelay(1, false);
-      if (z2) { servoTower2.write(constrain((int)(doc["zone2_angle"] | 90), 0, 180)); setRelay(2, (int)(doc["relay2"] | 0) == 1); }
-      else      setRelay(2, false);
-      buzzerAlarmActive = true;
-      setRGBColor(true, false, false); // RED
+    // Area 2: Servo 2 (GPIO 17) & Relay 2 (GPIO 26)
+    if (z2) {
+      int target2 = constrain((int)(doc["zone2_angle"] | 90), 0, 180);
+      if (currentServo2 != target2) {
+        servoTower2.write(target2);
+        currentServo2 = target2;
+      }
+      if (!currentRelay2) {
+        delay(120); // Beri jeda 120ms agar lonjakan arus servo selesai sebelum relay pompa ON
+        setRelay(2, true);
+        currentRelay2 = true;
+      }
+    } else {
+      if (currentServo2 != 90) {
+        servoTower2.write(90);
+        currentServo2 = 90;
+      }
+      if (currentRelay2) {
+        setRelay(2, false);
+        currentRelay2 = false;
+      }
+    }
 
-    // 2. Obstacle alert — ultrasonic 1-8 cm
-    } else if (strcmp(action, "OBSTACLE_ALERT") == 0) {
-      setRGBColor(true, true, false); // YELLOW
-      playBuzzerTone(1200, 150);
-
-    // 3. Standby
-    } else if (strcmp(action, "STANDBY") == 0) {
-      setRelay(1, false);
-      setRelay(2, false);
-      buzzerAlarmActive = false;
+    buzzerAlarmActive = (z1 || z2);
+    if (!buzzerAlarmActive) {
       noTone(PIN_BUZZER);
-      setRGBColor(false, true, false); // GREEN
+      setRGBColor(false, true, false); // Hijau (Aman)
+    }
 
-    // 4. Manual servo from Python dashboard
-    } else if (strcmp(action, "SET_SERVO") == 0) {
-      int tower = doc["tower"] | 1;
-      int angle = constrain((int)(doc["angle"] | 90), 0, 180);
-      if (tower == 1) servoTower1.write(angle);
-      else if (tower == 2) servoTower2.write(angle);
+  // 2. Obstacle alert — ultrasonic 1-8 cm
+  } else if (strcmp(action, "OBSTACLE_ALERT") == 0) {
+    setRGBColor(true, true, false); // YELLOW
+    playBuzzerTone(1200, 150);
 
-    // 5. Manual relay from Python dashboard
-    } else if (strcmp(action, "SET_RELAY") == 0) {
-      setRelay(doc["relay"] | 1, (int)(doc["state"] | 0) == 1);
+  // 3. Standby — Api telah padam / area bersih
+  } else if (strcmp(action, "STANDBY") == 0) {
+    if (currentServo1 != 90) {
+      servoTower1.write(90);
+      currentServo1 = 90;
+    }
+    if (currentServo2 != 90) {
+      servoTower2.write(90);
+      currentServo2 = 90;
+    }
+    if (currentRelay1) {
+      setRelay(1, false);
+      currentRelay1 = false;
+    }
+    if (currentRelay2) {
+      setRelay(2, false);
+      currentRelay2 = false;
+    }
+    buzzerAlarmActive = false;
+    noTone(PIN_BUZZER);
+    setRGBColor(false, true, false); // GREEN (Normal & Aman)
 
-    // 6. Buzzer test beep
-    } else if (strcmp(action, "BEEP") == 0) {
-      playBuzzerTone(1500, 200);
+  // 4. Manual servo dari Web Dashboard / Python (RESPON INSTAN TANPA DELAY)
+  } else if (strcmp(action, "SET_SERVO") == 0) {
+    int tower = doc["tower"] | 1;
+    int angle = constrain((int)(doc["angle"] | 90), 0, 180);
+    if (tower == 1) servoTower1.write(angle);
+    else if (tower == 2) servoTower2.write(angle);
+    Serial.printf("[MANUAL] Servo %d -> %d deg\n", tower, angle);
+
+  // 5. Manual relay dari Web Dashboard
+  } else if (strcmp(action, "SET_RELAY") == 0) {
+    int r = doc["relay"] | 1;
+    bool st = (int)(doc["state"] | 0) == 1;
+    setRelay(r, st);
+    Serial.printf("[MANUAL] Relay %d -> %s\n", r, st ? "ON" : "OFF");
+
+  // 6. Buzzer test beep
+  } else if (strcmp(action, "BEEP") == 0) {
+    playBuzzerTone(1500, 150);
+
+  // 7. Manual LED RGB
+  } else if (strcmp(action, "SET_RGB") == 0) {
+    String c = doc["color"] | "GREEN";
+    if      (c == "RED")    setRGBColor(true,  false, false);
+    else if (c == "GREEN")  setRGBColor(false, true,  false);
+    else if (c == "YELLOW") setRGBColor(true,  true,  false);
+    else if (c == "BLUE")   setRGBColor(false, false, true);
+    else                    setRGBColor(false, false, false);
+  }
+}
+
+void handleIncomingCommands() {
+  if (!tcpClient || !tcpClient.connected()) return;
+
+  static String lineBuf = "";
+  while (tcpClient.available()) {
+    char c = (char)tcpClient.read();
+    if (c == '\n') {
+      lineBuf.trim();
+      if (lineBuf.length() > 0) {
+        StaticJsonDocument<512> doc;
+        DeserializationError err = deserializeJson(doc, lineBuf);
+        if (!err) {
+          executeCommand(doc);
+        } else {
+          Serial.println("[JSON ERROR] " + String(err.c_str()));
+        }
+      }
+      lineBuf = "";
+    } else if (c != '\r') {
+      if (lineBuf.length() < 512) {
+        lineBuf += c;
+      }
     }
   }
 }
@@ -408,64 +475,67 @@ void setup() {
   servoTower2.setPeriodHertz(50);
   servoTower1.attach(PIN_SERVO_TOWER1, 500, 2400);
   servoTower2.attach(PIN_SERVO_TOWER2, 500, 2400);
-  delay(300); // Let servo driver capacitors charge before sending angle
+  delay(150); // Let servo driver capacitors charge before sending angle
 
-  // Park both at 90°
+  // Park both at 90° (Posisi Standby Siaga)
   servoTower1.write(90);
-  delay(600);  // Wait for Servo 1 to reach position (avoid current spike overlap)
+  delay(150);
   servoTower2.write(90);
-  delay(600);
+  delay(150);
 
-  // Servo 1 diagnostic sweep (if horn still doesn't move → gear stripped → replace)
-  Serial.println("[SERVO] Diagnostic sweep Servo 1 (GPIO 16) — watch white horn");
-  Serial.println("[SERVO]   If motor sounds but horn is still → gear stripped, replace servo");
-  servoBootSweep(servoTower1);
-  delay(400);
-
-  // Servo 2 diagnostic sweep
-  Serial.println("[SERVO] Diagnostic sweep Servo 2 (GPIO 17)");
-  servoBootSweep(servoTower2);
-  delay(400);
-
-  Serial.println("[BOOT] Servos initialized. Connecting to WiFi...");
+  Serial.println("[BOOT] Servos initialized at 90 deg. Connecting to WiFi...");
   setRGBColor(true, true, false); // Yellow = Connecting
   connectToWiFi();
   setRGBColor(false, true, false); // Green = Ready
   setupWebServer();
+
+  // Mulai TCP Server (Port 8888) untuk Python AI Central Hub
+  tcpServer.begin();
+  tcpServer.setNoDelay(true);
+  Serial.println("[TCP SERVER] Server Port 8888 Aktif!");
+  Serial.println("=================================================");
+  Serial.printf("[INFO] Alamat IP ESP32 Main: %s\n", WiFi.localIP().toString().c_str());
+  Serial.println("[INFO] Masukkan IP ini ke python_backend/server.py!");
+  Serial.println("=================================================");
 }
 
 void loop() {
   localWebServer.handleClient();   // Handle browser requests → http://<IP_ESP32>
-  ensureTcpConnection();
-  handleIncomingCommands();
+  checkIncomingTcpClients();       // Terima koneksi dari Python AI Central Hub
+  handleIncomingCommands();        // Baca dan eksekusi perintah secara instan
 
   unsigned long now = millis();
 
-  // Periodic ultrasonic reading
+  // Periodic ultrasonic reading (Tiap 250ms agar CPU lancar)
   if (now - lastDistanceMeasureTime >= distanceMeasureInterval) {
     lastDistanceMeasureTime = now;
     currentDistance = measureUltrasonicDistance();
   }
 
-  // Send telemetry JSON to Python server
+  // Send telemetry JSON to Python server (Tiap 250ms tanpa spam)
   if (now - lastTelemetryTime >= telemetryInterval) {
     lastTelemetryTime = now;
-    int flameRaw = digitalRead(PIN_FLAME_SENSOR);
-    if (tcpClient.connected()) {
-      StaticJsonDocument<128> tel;
-      tel["distance_cm"] = round(currentDistance * 10) / 10.0;
-      tel["flame_pin"]   = flameRaw;
-      String out; serializeJson(tel, out); out += "\n";
-      tcpClient.print(out);
+    if (tcpClient && tcpClient.connected()) {
+      int flameRaw = digitalRead(PIN_FLAME_SENSOR);
+      char telBuf[96];
+      snprintf(telBuf, sizeof(telBuf), "{\"distance_cm\":%.1f,\"flame_pin\":%d}\n",
+               currentDistance, flameRaw);
+      tcpClient.print(telBuf);
     }
   }
 
-  // Fire alarm siren
+  // Fire alarm: LED RGB merah & Buzzer bunyi beep berkala (hemat arus & stabil)
   if (buzzerAlarmActive) {
-    if (now - lastBuzzerToggleTime > 180) {
+    if (now - lastBuzzerToggleTime >= 700) {
       lastBuzzerToggleTime = now;
       buzzerToneState = !buzzerToneState;
-      tone(PIN_BUZZER, buzzerToneState ? 2200 : 1400);
+      if (buzzerToneState) {
+        setRGBColor(true, false, false); // MERAH
+        tone(PIN_BUZZER, 1800, 100);     // Beep 100ms singkat
+      } else {
+        setRGBColor(true, true, false);  // KUNING
+        noTone(PIN_BUZZER);
+      }
     }
   }
 }
