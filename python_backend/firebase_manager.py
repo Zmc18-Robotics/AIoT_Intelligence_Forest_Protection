@@ -31,8 +31,8 @@ CONFIG_PATH = CONFIG_PATHS[0]
 DEFAULT_FIREBASE_CONFIG = {
     "enabled": True,
     # Masukkan URL Firebase Realtime Database Anda di sini:
-    # Contoh: "https://proyek-aiot-hutan-default-rtdb.firebaseio.com"
-    "database_url": "https://aiot-forest-protection-default-rtdb.firebaseio.com",
+    # Contoh: "-"
+    "database_url": "-",
     # Opsional: Database secret / auth token (kosongkan jika rules .read=true, .write=true)
     "auth_token": "",
     "sync_interval_seconds": 3
